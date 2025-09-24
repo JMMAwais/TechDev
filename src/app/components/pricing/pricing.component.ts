@@ -9,9 +9,14 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./pricing.component.css']
 })
 export class PricingComponent {
+  selectedCard: string = 'standard'; // Default selected card
   isAnnual: boolean = false;
 
-  toggleBilling() {
+  selectCard(cardType: string): void {
+    this.selectedCard = cardType;
+  }
+
+  toggleBilling(): void {
     this.isAnnual = !this.isAnnual;
   }
 }

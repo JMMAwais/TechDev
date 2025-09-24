@@ -76,10 +76,7 @@
     box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.1);
 }
 
-.card.border-primary {
-    border-width: 2px !important;
-}
-
+/* Button Styles */
 .btn {
     border-radius: 8px;
     font-weight: 600;
@@ -94,6 +91,18 @@
 
 .btn-primary:hover {
     background: linear-gradient(135deg, #0a58ca 0%, #084298 100%);
+    transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+    border: 2px solid #0d6efd;
+    color: #0d6efd;
+    background: transparent;
+}
+
+.btn-outline-primary:hover {
+    background: #0d6efd;
+    color: white;
     transform: translateY(-2px);
 }
 
