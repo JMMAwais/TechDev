@@ -176,12 +176,12 @@
 
 /* Background Image Section Styles */
 .background-image-section {
-    /* background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                      url('/assets/images/pricingBackgroundimage.png'); */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), 
+                      url('/assets/images/pricingBackgroundimage.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 200px;
+    min-height: 500px;
     display: flex;
     align-items: center;
     position: relative;
