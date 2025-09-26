@@ -12,6 +12,8 @@ export class PricingComponent {
   selectedCard: string = 'standard'; // Default selected card
   isAnnual: boolean = false;
 
+ backgroundImage: string = 'assets/images/pricingBackgroundimage.png';
+
   selectCard(cardType: string): void {
     this.selectedCard = cardType;
   }
