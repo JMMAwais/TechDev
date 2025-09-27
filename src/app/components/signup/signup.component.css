@@ -1,0 +1,64 @@
+/*
+ * 1. Default (Desktop View - Based on your first image)
+ * This assumes your current CSS makes the columns appear side-by-side.
+ * For simplicity, I'm just showing the mobile override.
+ */
+
+/*
+ * 2. Mobile View (To match your second image)
+ * The max-width can be adjusted, but 768px is a common breakpoint for tablets/mobile.
+ */
+@media (max-width: 768px) {
+    
+    /* Main Footer Layout: Stacks columns vertically */
+    .site-footer {
+        /* If the main columns are using flexbox or grid to be side-by-side on desktop, 
+           you might need to override the display property here to stack them. 
+           Example: */
+        display: block; /* Stacks the child elements */
+        padding: 20px; /* Add internal spacing */
+        /* Remove any multi-column specific styles */
+    }
+
+    /* Style for the Airbook Logo/Social Section */
+    .footer-logo-social {
+        margin-bottom: 30px; /* Space out the logo section from the lists */
+    }
+
+    /* Column Headers (Product, Metrics, Solutions, Resources) */
+    .footer-column h2 {
+        /* This is the heading text, e.g., 'Product' or 'Metrics' */
+        font-size: 1.2em; /* Increase font size a bit for mobile prominence */
+        margin-top: 25px; /* Add space *above* each main heading */
+        margin-bottom: 10px; /* Add space *below* the main heading */
+        font-weight: bold;
+        color: #333; /* Darker color for headings */
+    }
+
+    /* The Bullet Point List Styling */
+    .footer-column ul {
+        /* Ensures the list takes up the full width and has standard list properties */
+        list-style-type: disc; /* Use a solid disc for the bullet */
+        padding-left: 20px; /* Indent the list to make room for the bullets */
+        margin: 0;
+    }
+
+    /* List Items */
+    .footer-column ul li {
+        margin-bottom: 8px; /* Space between each list item (the links) */
+    }
+
+    /* The Link Text Styling */
+    .footer-column ul li a {
+        /* Styling for the link text itself */
+        color: #555; /* A standard link color */
+        text-decoration: none; /* Remove underline */
+        font-size: 1em; /* Standard font size */
+        display: block; /* Makes the entire <li> click target a block */
+        line-height: 1.5; /* Good line spacing for readability */
+    }
+    
+    .footer-column ul li a:hover {
+        text-decoration: underline; /* Add underline on hover for interaction */
+    }
+}
