@@ -174,18 +174,20 @@
     }
 }
 
-/* Background Image Section Styles */
+/* Background section */
 .background-image-section {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), 
-                      url('/assets/images/pricingBackgroundimage.png');
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.6), rgba(130, 255, 255, 0.3)), 
+      url('/assets/images/pricingBackgroundimage.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     min-height: 500px;
     display: flex;
-    align-items: center;
+    align-items: center;  /* vertically center */
+    justify-content: flex-start; /* ✅ left side align */
     position: relative;
-    padding: 4rem 0;
+    padding: 4rem 2rem; /* left padding */
 }
 
 .background-img {
@@ -197,21 +199,36 @@
     object-fit: cover;
     z-index: 1;
 }
-
-.content-overlay {
-    text-align: center;
-    color: white;
+/* .content-overlay {
+    text-align: left;
+    color: rgb(30, 30, 30);
     max-width: 600px;
     margin: 0 auto;
+   
 }
-
 .section-title {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
     line-height: 1.2;
+} */
+
+.content-overlay {
+    position: relative;
+    z-index: 2;
+    max-width: 600px; /* content ki width limit */
+    text-align: left; /* ✅ left align text */
 }
 
+.section-title {
+    font-size: 3.6rem; /* bigger heading */
+    font-weight: 600;  /* heavier text */
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    color: #1E1E1E; /* dark text */
+}
+
+/* description */
 .section-description {
     font-size: 1.2rem;
     margin-bottom: 2rem;
@@ -220,13 +237,13 @@
 }
 
 .cta-button {
-    background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+    background-color: #222; /* matte black */
     color: white;
     border: none;
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 8px;
+    padding: 1rem 2.3rem;
+    font-size: 1.0rem;
+    font-weight: 500;
+    border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
