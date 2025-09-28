@@ -257,6 +257,15 @@
     color: white;
 }
 
+.button-row {
+  height: 70px; /* ya */
+}
+
+.button-row th, 
+.button-row td {
+  padding-top: 20px !important; /* extra gap */
+}
+
 /* Responsive Design for Background Section */
 @media (max-width: 768px) {
     .background-image-section {
