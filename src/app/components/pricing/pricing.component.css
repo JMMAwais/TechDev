@@ -295,4 +295,54 @@
     .section-description {
         font-size: 1rem;
     }
+
+    
+}
+
+@media (max-width: 767px) {
+  /* Hide the header row */
+  .custom-table thead {
+    display: none;
+  }
+
+  .custom-table, 
+  .custom-table tbody, 
+  .custom-table tr, 
+  .custom-table td, 
+  .custom-table th {
+    display: block;
+    width: 100%;
+  }
+
+  .custom-table tr {
+    margin-bottom: 1.5rem;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 0.5rem;
+  }
+
+  .custom-table th[scope="row"] {
+    font-weight: bold;
+    background: #f8f9fa;
+    padding: 0.5rem;
+  }
+
+  .custom-table td {
+    padding-left: 0.5rem;
+    text-align: left;
+    position: relative;
+  }
+
+  /* Optional: add label before each cell (uses data-label attribute) */
+  .custom-table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.2rem;
+    color: #666;
+  }
+
+  .button-row {
+    height: auto;
+  }
 }
