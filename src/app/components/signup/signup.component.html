@@ -1,7 +1,269 @@
-<div class="content-wrapper">
-    <header>
-        </header>
+<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center py-4" 
+     style="background: linear-gradient(135deg, #f8f9fa 0%, #fdfdfd 100%);">
+  <div class="row g-0 w-100" style="max-width: 1000px;">
+    <!-- Left Panel - Features -->
+    <div class="col-lg-6 d-none d-lg-block">
+      <div class="h-100 p-5 text-white" 
+           style="background: linear-gradient(135deg, #446f80 0%, #3ad4b3 100%);">
+        <div class="d-flex align-items-center mb-4">
+          <i class="fas fa-graduation-cap fa-2x me-3"></i>
+          <h3 class="mb-0 fw-bold">EduTechDev</h3>
+        </div>
+        
+        <h2 class="mb-4">Transform Your Educational Institution</h2>
+        <p class="mb-4 opacity-75">Join thousands of schools and colleges using our AI-powered SaaS platform</p>
+        
+        <ul class="list-unstyled">
+          @for (feature of features; track feature) {
+            <li class="mb-3 d-flex align-items-start">
+              <i class="fas fa-check-circle text-info me-2 mt-1"></i>
+              <span>{{ feature }}</span>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
 
-    <main>
-        </main>
-</div><p>signup works!</p>
+    <!-- Right Panel - Signup Form -->
+    <div class="col-12 col-lg-6">
+      <div class="bg-white p-4 p-md-5 h-100">
+        <!-- Mobile Logo -->
+        <div class="d-lg-none d-flex align-items-center mb-4">
+          <i class="fas fa-graduation-cap fa-2x me-3 text-primary"></i>
+          <h4 class="mb-0 fw-bold text-primary">EduTechDev ERP</h4>
+        </div>
+
+        <h1 class="h3 fw-bold mb-2">Create Your Account</h1>
+        <p class="text-muted mb-4">Set up your educational institution on our platform</p>
+
+        <!-- Google Signup -->
+        <button class="btn btn-outline-secondary w-100 mb-4 d-flex align-items-center justify-content-center"
+                (click)="onGoogleSignup()">
+          <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbD0iI0ZGMzAwMCIgZD0iTTEwLjE4IDkuMDRMMTIuOTUgN0wxMi45NSAyLjg1QzEyLjI0IDIuNzUgMTEuNDIgMi42NyAxMC41NiAyLjY3Yy0yLjYyIDAtNC40MyAxLjE2LTUuNDUgMi43MmwzLjA2IDIuNDJ6Ii8+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTE3LjY0IDkuMmMwLS42My0uMDYtMS4yNS0uMTYtMS44NEg4Ljk2djMuNDloNC45NGMtLjIyIDEuMTgtLjg3IDIuMTgtMS44NyAyLjg0djIuMzJoMy4wMWMxLjc2LTEuNjIgMi43OC00LjA0IDIuNzgtNi45eiIvPjxwYXRoIGZpbGw9IiNGQkJDMDQiIGQ9Ik00LjA2IDEwLjcxYy0uMjQtLjcxLS4zNy0xLjQ3LS4zNy0yLjI2IDAtLjc5LjEzLTEuNTUuMzctMi4yNlY1Ljk3SDEuMDJDLS4wMyA4LjA1LS4wMyAxMC42OCAxLjAyIDEyLjc0bDMuMDQtMi4zNnoiLz48cGF0aCBmaWxsPSIjMzRBODUzIiBkPSJNOC45NiAxOC4wMGMzLjQ4IDAgNi40LTEuMTUgOC41NS0zLjExbC0zLjAxLTIuMzJjLS44NC41Ni0xLjkxLjktMy4xNC45LTIuNDEgMC00LjQ1LTEuNjMtNS4xOS0zLjgySDEuMDJ2Mi4zN2MyLjM1IDQuNjcgNy4yMiA3Ljg4IDEzLjU0IDcuODh6Ii8+PC9zdmc+" 
+               alt="Google" width="18" height="18" class="me-2">
+          Sign up with Google
+        </button>
+
+        <!-- Divider -->
+        <div class="position-relative text-center mb-4">
+          <hr>
+          <span class="position-absolute top-50 start-50 translate-middle bg-white px-3 text-muted">OR</span>
+        </div>
+
+        <!-- Signup Form -->
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+          <div class="row g-3">
+            <!-- First Name & Last Name -->
+            <div class="col-md-6">
+              <label for="firstName" class="form-label fw-semibold">First Name</label>
+              <input type="text" 
+                     class="form-control" 
+                     id="firstName"
+                     formControlName="firstName"
+                     [class.is-invalid]="firstName?.invalid && firstName?.touched"
+                     placeholder="Enter first name">
+              @if (firstName?.errors?.['required'] && firstName?.touched) {
+                <div class="invalid-feedback">
+                  First name is required
+                </div>
+              }
+              @if (firstName?.errors?.['minlength'] && firstName?.touched) {
+                <div class="invalid-feedback">
+                  First name must be at least 2 characters
+                </div>
+              }
+            </div>
+
+            <div class="col-md-6">
+              <label for="lastName" class="form-label fw-semibold">Last Name</label>
+              <input type="text" 
+                     class="form-control" 
+                     id="lastName"
+                     formControlName="lastName"
+                     [class.is-invalid]="lastName?.invalid && lastName?.touched"
+                     placeholder="Enter last name">
+              @if (lastName?.errors?.['required'] && lastName?.touched) {
+                <div class="invalid-feedback">
+                  Last name is required
+                </div>
+              }
+              @if (lastName?.errors?.['minlength'] && lastName?.touched) {
+                <div class="invalid-feedback">
+                  Last name must be at least 2 characters
+                </div>
+              }
+            </div>
+
+            <!-- Institution Name -->
+            <div class="col-12">
+              <label for="institutionName" class="form-label fw-semibold">Institution Name</label>
+              <input type="text" 
+                     class="form-control" 
+                     id="institutionName"
+                     formControlName="institutionName"
+                     [class.is-invalid]="institutionName?.invalid && institutionName?.touched"
+                     placeholder="Your school/college name">
+              @if (institutionName?.errors?.['required'] && institutionName?.touched) {
+                <div class="invalid-feedback">
+                  Institution name is required
+                </div>
+              }
+            </div>
+
+            <!-- Institution Type -->
+            <div class="col-12">
+              <label for="institutionType" class="form-label fw-semibold">Institution Type</label>
+              <select class="form-select" 
+                      id="institutionType"
+                      formControlName="institutionType"
+                      [class.is-invalid]="institutionType?.invalid && institutionType?.touched">
+                <option value="">Select institution type</option>
+                @for (type of institutionTypes; track type.value) {
+                  <option [value]="type.value">{{ type.label }}</option>
+                }
+              </select>
+              @if (institutionType?.errors?.['required'] && institutionType?.touched) {
+                <div class="invalid-feedback">
+                  Please select institution type
+                </div>
+              }
+            </div>
+
+            <!-- Email -->
+            <div class="col-12">
+              <label for="email" class="form-label fw-semibold">Email Address</label>
+              <input type="email" 
+                     class="form-control" 
+                     id="email"
+                     formControlName="email"
+                     [class.is-invalid]="email?.invalid && email?.touched"
+                     placeholder="Enter email address">
+              @if (email?.errors?.['required'] && email?.touched) {
+                <div class="invalid-feedback">
+                  Email is required
+                </div>
+              }
+              @if (email?.errors?.['email'] && email?.touched) {
+                <div class="invalid-feedback">
+                  Please enter a valid email address
+                </div>
+              }
+            </div>
+
+            <!-- Password -->
+            <div class="col-12">
+              <label for="password" class="form-label fw-semibold">Password</label>
+              <div class="input-group">
+                <input [type]="showPassword ? 'text' : 'password'" 
+                       class="form-control" 
+                       id="password"
+                       formControlName="password"
+                       [class.is-invalid]="password?.invalid && password?.touched"
+                       placeholder="Enter password">
+                <button class="btn btn-outline-secondary" 
+                        type="button"
+                        (click)="togglePasswordVisibility('password')">
+                  <i class="fas" [class.fa-eye]="!showPassword" [class.fa-eye-slash]="showPassword"></i>
+                </button>
+              </div>
+              @if (password?.errors?.['required'] && password?.touched) {
+                <div class="invalid-feedback">
+                  Password is required
+                </div>
+              }
+              @if (password?.errors?.['minlength'] && password?.touched) {
+                <div class="invalid-feedback">
+                  Password must be at least 8 characters
+                </div>
+              }
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="col-12">
+              <label for="confirmPassword" class="form-label fw-semibold">Confirm Password</label>
+              <div class="input-group">
+                <input [type]="showConfirmPassword ? 'text' : 'password'" 
+                       class="form-control" 
+                       id="confirmPassword"
+                       formControlName="confirmPassword"
+                       [class.is-invalid]="confirmPassword?.invalid && confirmPassword?.touched"
+                       placeholder="Confirm password">
+                <button class="btn btn-outline-secondary" 
+                        type="button"
+                        (click)="togglePasswordVisibility('confirmPassword')">
+                  <i class="fas" [class.fa-eye]="!showConfirmPassword" [class.fa-eye-slash]="showConfirmPassword"></i>
+                </button>
+              </div>
+              @if (confirmPassword?.errors?.['required'] && confirmPassword?.touched) {
+                <div class="invalid-feedback">
+                  Please confirm your password
+                </div>
+              }
+              @if (confirmPassword?.errors?.['passwordMismatch'] && confirmPassword?.touched) {
+                <div class="invalid-feedback">
+                  Passwords do not match
+                </div>
+              }
+            </div>
+
+            <!-- Phone -->
+            <div class="col-12">
+              <label for="phone" class="form-label fw-semibold">Phone Number</label>
+              <input type="tel" 
+                     class="form-control" 
+                     id="phone"
+                     formControlName="phone"
+                     placeholder="Optional phone number">
+            </div>
+
+            <!-- Terms Agreement -->
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" 
+                       type="checkbox" 
+                       id="terms"
+                       formControlName="terms"
+                       [class.is-invalid]="terms?.invalid && terms?.touched">
+                <label class="form-check-label" for="terms">
+                  I agree to the <a href="#" class="text-primary text-decoration-none">Terms of Service</a> 
+                  and <a href="#" class="text-primary text-decoration-none">Privacy Policy</a>
+                </label>
+                @if (terms?.invalid && terms?.touched) {
+                  <div class="invalid-feedback">
+                    You must agree to the terms and conditions
+                  </div>
+                }
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="col-12">
+              <button type="submit" 
+                      class="btn btn-teal w-100 py-2 fw-semibold"
+                      [disabled]="signupForm.invalid">
+                Create Account
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Tenant Info Card -->
+        <div class="alert alert-info mt-4" role="alert">
+          <h6 class="alert-heading fw-bold mb-2">Tenant Admin Registration</h6>
+          <p class="mb-0 small">
+            By signing up, you're creating a new tenant (institution) and will be assigned as the Tenant Admin. 
+            As a Tenant Admin, you'll have full access to manage your institution's data, users, and settings.
+          </p>
+        </div>
+
+        <!-- Login Link -->
+        <div class="text-center mt-3">
+          <p class="text-muted mb-0">
+            Already have an account? 
+            <a routerLink="/login" class="text-primary text-decoration-none fw-semibold">Sign in</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
