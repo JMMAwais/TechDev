@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../../shared/footer/footer.component';
+import { RouterLink } from '@angular/router'; 
 
 @Component({
   selector: 'app-pricing',
   standalone: true,
-  imports: [CommonModule,FooterComponent],
+  imports: [CommonModule,FooterComponent,RouterLink],
   templateUrl: './pricing.component.html',
   styleUrls: ['./pricing.component.css']
 })
