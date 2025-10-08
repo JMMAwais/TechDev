@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../../shared/footer/footer.component';
 import { RouterLink } from '@angular/router'; 
 
+
 @Component({
   selector: 'app-pricing',
   standalone: true,
@@ -13,6 +14,11 @@ import { RouterLink } from '@angular/router';
 export class PricingComponent {
   selectedCard: string = 'standard'; // Default selected card
   isAnnual: boolean = false;
+
+
+
+
+
 
  backgroundImage: string = 'assets/images/pricingBackgroundimage.png';
 

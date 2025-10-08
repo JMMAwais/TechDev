@@ -2,7 +2,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-3 py-2">
   <div class="container-fluid">
     <a class="navbar-brand me-4" href="#">
-      <span class="fw-bold fs-3 text-dark">Techdev</span>
+      <i class="fas fa-graduation-cap fa-1x me-3"></i>
+      <span class="fw-bold fs-3 text-dark">EduTechdev</span>
     </a>
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -33,7 +34,7 @@
       
       <div class="d-flex align-items-center gap-3">
         <a href="#" class="text-dark fw-medium text-decoration-none">Sign in</a>
-        <a routerLink="/signup" class="btn btn-dark fw-medium px-4 py-2" style="border-radius: 20px;">Get Started</a>
+        <a routerLink="/signup" [queryParams]="{ planId: '56C20ABE-3174-4E0B-93B7-5F5BCD57D17F' }" class="btn btn-dark fw-medium px-4 py-2" style="border-radius: 20px;">Get Started</a>
       </div>
     </div>
   </div>
@@ -85,7 +86,7 @@
             <ul class="list-unstyled">
               <li class="mb-2">
                 <i class="fas fa-check text-success me-2"></i>
-                Multi-tenant setup (Super Admin, Tenant Admin, Student, Teacher, Parent).
+                Multi-tenant setup.
               </li>
               <li class="mb-2">
                 <i class="fas fa-check text-success me-2"></i>
@@ -97,11 +98,11 @@
               </li>
               <li class="mb-2">
                 <i class="fas fa-check text-success me-2"></i>
-                Academic session, class & section management.
+                Academic session & section management.
               </li>
               <li class="mb-2">
                 <i class="fas fa-check text-success me-2"></i>
-                Student & staff management (admission, profiles, parent linking).
+                Student & staff management.
               </li>
               <li>
                 <i class="fas fa-check text-success me-2"></i>
@@ -113,7 +114,7 @@
               </li>
             </ul>
 
-            <button class="btn w-100 mt-3" 
+            <button routerLink="/signup" class="btn w-100 mt-3" 
                     [class.btn-primary]="selectedCard === 'basic'"
                     [class.btn-outline-primary]="selectedCard !== 'basic'">
               Get Started

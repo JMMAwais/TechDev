@@ -1,19 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, HttpClientModule],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   showPassword = false;
   showConfirmPassword = false;
+  planId: string | null = null;
 
   institutionTypes = [
     { value: 'school', label: 'School' },
@@ -31,7 +33,11 @@ export class SignupComponent {
     'Parent-Teacher Communication Hub'
   ];
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private http: HttpClient // ✅ HttpClient injected
+  ) {
     this.signupForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required, Validators.minLength(2)]],
@@ -65,16 +71,40 @@ export class SignupComponent {
   }
 
   onGoogleSignup() {
-    // Implement Google OAuth integration
     console.log('Google signup initiated');
   }
 
   onSubmit() {
     if (this.signupForm.valid) {
-      console.log('Form submitted:', this.signupForm.value);
-      // Here you would typically call your authentication service
-      alert('Account creation request submitted! You will be redirected to setup your institution.');
-      // this.router.navigate(['/tenant-setup']);
+      const formValue = this.signupForm.value;
+
+      
+      const payload = {
+        firstName: formValue.firstName,
+        lastName: formValue.lastName,
+        institutionName: formValue.institutionName,
+        // institutionType: formValue.institutionType,
+        email: formValue.email,
+        password: formValue.password,
+        // phone: formValue.phone,
+        planId: this.planId ,
+        initiatedBy: "SelfUser"
+      };
+
+      // ✅ Call API Gateway (Auth Service signup route)
+      this.http.post('https://localhost:7190/identity/Auth/signup', payload)
+        .subscribe({
+          next: (res) => {
+            console.log('Signup successful!', res);
+            alert('Account created successfully! Redirecting...');
+            // TODO: Redirect to institution setup/dashboard
+          },
+          error: (err) => {
+            console.error('Signup failed!', err);
+            alert('Signup failed! Please try again.');
+          }
+        });
+
     } else {
       this.markFormGroupTouched();
     }
@@ -95,4 +125,10 @@ export class SignupComponent {
   get password() { return this.signupForm.get('password'); }
   get confirmPassword() { return this.signupForm.get('confirmPassword'); }
   get terms() { return this.signupForm.get('terms'); }
+
+  ngOnInit() {
+    this.route.queryParamMap.subscribe(params => {
+      this.planId = params.get('planId');
+    });
+  }
 }
