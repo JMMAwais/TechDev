@@ -23,7 +23,7 @@
 }
 
 .navbar-nav .nav-link.active {
-    color: #0d6efd !important;
+    color: #21b3b8 !important;
     font-weight: 600;
 }
 
@@ -72,9 +72,9 @@
 }
 
 .pricing-card.selected {
-    border-color: #0d6efd !important;
+    border-color: #21b3b8 !important;
     border-width: 2px !important;
-    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.1);
+    box-shadow: 0 0 0 0.2rem rgba(41, 108, 114, 0.1);
 }
 
 /* Button Styles */
@@ -86,23 +86,23 @@
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+    background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
     border: none;
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #0a58ca 0%, #084298 100%);
+    background: linear-gradient(135deg, #9e2723 0%, #199cb1 100%);
     transform: translateY(-2px);
 }
 
 .btn-outline-primary {
-    border: 2px solid #0d6efd;
-    color: #0d6efd;
+    border: 2px solid #21b3b8;
+    color: #21b3b8;
     background: transparent;
 }
 
 .btn-outline-primary:hover {
-    background: #0d6efd;
+    background: #21b3b8;
     color: white;
     transform: translateY(-2px);
 }
@@ -111,6 +111,7 @@
     font-size: 0.75rem;
     border-radius: 20px;
     font-weight: 600;
+    background-color: #21b3b8;
 }
 
 .form-check-input {
@@ -119,8 +120,8 @@
 }
 
 .form-check-input:checked {
-    background-color: #0d6efd;
-    border-color: #0d6efd;
+    background-color: #21b3b8;
+    border-color: #21b3b8;
 }
 
 .mt-8 {
