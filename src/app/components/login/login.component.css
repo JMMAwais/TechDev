@@ -1,0 +1,27 @@
+.btn-teal {
+  background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-teal:hover {
+  background: linear-gradient(135deg, #9e2723 0%, #199cb1 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(60, 223, 174, 0.3);
+}
+
+.btn-teal:active {
+  transform: translateY(0);
+}
+
+.btn-teal:disabled {
+  background: #058fa1;
+  transform: none;
+  box-shadow: none;
+}
+
+.right-top-shadow {
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1), 0 -4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
