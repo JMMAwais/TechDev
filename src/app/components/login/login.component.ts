@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
@@ -11,124 +11,59 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-  signupForm: FormGroup;
+export class LoginComponent {
+  loginForm: FormGroup;
   showPassword = false;
-  showConfirmPassword = false;
-  planId: string | null = null;
-
-  institutionTypes = [
-    { value: 'school', label: 'School' },
-    { value: 'college', label: 'College/University' },
-    { value: 'coaching', label: 'Coaching Institute' },
-    { value: 'other', label: 'Other' }
-  ];
-
-  features = [
-    'Multi-tenant SaaS Architecture',
-    'AI-Powered Learning & Analytics',
-    'Comprehensive Student & Staff Management',
-    'Smart Attendance & Exam Systems',
-    'Integrated Fee & Finance Management',
-    'Parent-Teacher Communication Hub'
-  ];
 
   constructor(
     private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private http: HttpClient // ✅ HttpClient injected
+    private http: HttpClient,
+    private router: Router
   ) {
-    this.signupForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.minLength(2)]],
-      lastName: ['', [Validators.required, Validators.minLength(2)]],
-      institutionName: ['', [Validators.required, Validators.minLength(3)]],
-      institutionType: ['', Validators.required],
+    this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', Validators.required],
-      phone: [''],
-      terms: [false, Validators.requiredTrue]
-    }, { validator: this.passwordMatchValidator });
+    });
   }
 
-  passwordMatchValidator(form: FormGroup) {
-    const password = form.get('password');
-    const confirmPassword = form.get('confirmPassword');
-    
-    if (password && confirmPassword && password.value !== confirmPassword.value) {
-      confirmPassword.setErrors({ passwordMismatch: true });
-    } else {
-      confirmPassword?.setErrors(null);
-    }
-  }
-
-  togglePasswordVisibility(field: string) {
-    if (field === 'password') {
-      this.showPassword = !this.showPassword;
-    } else {
-      this.showConfirmPassword = !this.showConfirmPassword;
-    }
-  }
-
+  // ✅ Fix for missing method
   onGoogleSignup() {
     console.log('Google signup initiated');
   }
 
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+
   onSubmit() {
-    if (this.signupForm.valid) {
-      const formValue = this.signupForm.value;
+    if (this.loginForm.valid) {
+      const payload = this.loginForm.value;
 
-      
-      const payload = {
-        firstName: formValue.firstName,
-        lastName: formValue.lastName,
-        institutionName: formValue.institutionName,
-        // institutionType: formValue.institutionType,
-        email: formValue.email,
-        password: formValue.password,
-        // phone: formValue.phone,
-        planId: this.planId ,
-        initiatedBy: "SelfUser"
-      };
-
-      // ✅ Call API Gateway (Auth Service signup route)
-      this.http.post('https://localhost:7190/identity/Auth/signup', payload)
+      this.http.post('https://localhost:7190/identity/Auth/login', payload)
         .subscribe({
           next: (res) => {
-            console.log('Signup successful!', res);
-            alert('Account created successfully! Redirecting...');
-            // TODO: Redirect to institution setup/dashboard
+            console.log('Login successful!', res);
+            alert('Login successful! Redirecting...');
+            this.router.navigate(['/dashboard']);
           },
           error: (err) => {
-            console.error('Signup failed!', err);
-            alert('Signup failed! Please try again.');
+            console.error('Login failed!', err);
+            alert('Invalid credentials!');
           }
         });
-
     } else {
       this.markFormGroupTouched();
     }
   }
 
   markFormGroupTouched() {
-    Object.keys(this.signupForm.controls).forEach(key => {
-      const control = this.signupForm.get(key);
+    Object.keys(this.loginForm.controls).forEach(key => {
+      const control = this.loginForm.get(key);
       control?.markAsTouched();
     });
   }
 
-  get firstName() { return this.signupForm.get('firstName'); }
-  get lastName() { return this.signupForm.get('lastName'); }
-  get institutionName() { return this.signupForm.get('institutionName'); }
-  get institutionType() { return this.signupForm.get('institutionType'); }
-  get email() { return this.signupForm.get('email'); }
-  get password() { return this.signupForm.get('password'); }
-  get confirmPassword() { return this.signupForm.get('confirmPassword'); }
-  get terms() { return this.signupForm.get('terms'); }
-
-  ngOnInit() {
-    this.route.queryParamMap.subscribe(params => {
-      this.planId = params.get('planId');
-    });
-  }
+  get email() { return this.loginForm.get('email'); }
+  get password() { return this.loginForm.get('password'); }
 }
+

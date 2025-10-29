@@ -54,7 +54,7 @@
         </div>
 
         <!-- Signup Form -->
-        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div class="row g-3">
      
 
@@ -91,7 +91,7 @@
                        placeholder="Enter password">
                 <button class="btn btn-outline-secondary" 
                         type="button"
-                        (click)="togglePasswordVisibility('password')">
+                        (click)="togglePasswordVisibility()">
                   <i class="fas" [class.fa-eye]="!showPassword" [class.fa-eye-slash]="showPassword"></i>
                 </button>
               </div>
@@ -115,7 +115,7 @@
             <div class="col-12 pt-4 pb-2">
               <button type="submit" 
                       class="btn btn-teal w-100 py-2 fw-semibold"
-                      [disabled]="signupForm.invalid">
+                      [disabled]="loginForm.invalid">
                 Sign In
               </button>
             </div>
