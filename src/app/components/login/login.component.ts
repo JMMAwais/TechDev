@@ -42,8 +42,8 @@ export class LoginComponent {
 
          const body = new HttpParams()
       .set('grant_type', 'password')
-      .set('client_id', 'your-client-id')
-      .set('client_secret', 'your-client-secret')
+      //.set('client_id', 'your-client-id')
+      .set('client_secret', 'tenant-osama-publis-schol')
       .set('username', payload.email)
       .set('password', payload.password);
 
