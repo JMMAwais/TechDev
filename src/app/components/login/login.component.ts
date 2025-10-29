@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpParams, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -39,6 +40,13 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const payload = this.loginForm.value;
 
+         const body = new HttpParams()
+      .set('grant_type', 'password')
+      .set('client_id', 'your-client-id')
+      .set('client_secret', 'your-client-secret')
+      .set('username', payload.email)
+      .set('password', payload.password);
+
       this.http.post('https://localhost:7190/identity/Auth/token', payload)
         .subscribe({
           next: (res) => {
@@ -65,5 +73,16 @@ export class LoginComponent {
 
   get email() { return this.loginForm.get('email'); }
   get password() { return this.loginForm.get('password'); }
+
+  const body = new HttpParams()
+    .set('grant_type', 'password')
+    .set('client_id', 'your-client-id')
+    .set('client_secret', 'your-client-secret')
+    .set('username', 'your-username')
+    .set('password', 'your-password');
+
+    const headers = new HttpHeaders({
+    'Content-Type': 'application/x-www-form-urlencoded'
+});
 }
 
