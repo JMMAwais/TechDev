@@ -47,7 +47,13 @@ export class LoginComponent {
       .set('username', payload.email)
       .set('password', payload.password);
 
-      this.http.post('https://localhost:7190/identity/Auth/token', payload)
+
+      const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+
+
+      this.http.post('https://localhost:7190/identity/Auth/token',  body.toString(), { headers })
         .subscribe({
           next: (res) => {
             console.log('Login successful!', res);
@@ -74,15 +80,5 @@ export class LoginComponent {
   get email() { return this.loginForm.get('email'); }
   get password() { return this.loginForm.get('password'); }
 
-  const body = new HttpParams()
-    .set('grant_type', 'password')
-    .set('client_id', 'your-client-id')
-    .set('client_secret', 'your-client-secret')
-    .set('username', 'your-username')
-    .set('password', 'your-password');
-
-    const headers = new HttpHeaders({
-    'Content-Type': 'application/x-www-form-urlencoded'
-});
 }
 
