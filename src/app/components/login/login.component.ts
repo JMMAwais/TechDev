@@ -39,7 +39,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const payload = this.loginForm.value;
 
-      this.http.post('https://localhost:7190/identity/Auth/login', payload)
+      this.http.post('https://localhost:7190/identity/Auth/token', payload)
         .subscribe({
           next: (res) => {
             console.log('Login successful!', res);
