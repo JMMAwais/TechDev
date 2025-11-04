@@ -74,41 +74,56 @@ export class SignupComponent implements OnInit {
     console.log('Google signup initiated');
   }
 
-  onSubmit() {
-    if (this.signupForm.valid) {
-      const formValue = this.signupForm.value;
+onSubmit() {
+  if (this.signupForm.valid) {
+    const formValue = this.signupForm.value;
 
-      
-      const payload = {
-        firstName: formValue.firstName,
-        lastName: formValue.lastName,
-        institutionName: formValue.institutionName,
-        // institutionType: formValue.institutionType,
-        email: formValue.email,
-        password: formValue.password,
-        // phone: formValue.phone,
-        planId: this.planId ,
-        initiatedBy: "SelfUser"
-      };
+    const payload = {
+      firstName: formValue.firstName,
+      lastName: formValue.lastName,
+      institutionName: formValue.institutionName,
+      email: formValue.email,
+      password: formValue.password,
+      planId: this.planId,
+      initiatedBy: "SelfUser"
+    };
 
-      // ✅ Call API Gateway (Auth Service signup route)
-      this.http.post('https://localhost:7190/identity/Auth/signup', payload)
-        .subscribe({
-          next: (res) => {
-            console.log('Signup successful!', res);
-            alert('Account created successfully! Redirecting...');
-            // TODO: Redirect to institution setup/dashboard
-          },
-          error: (err) => {
-            console.error('Signup failed!', err);
-            alert('Signup failed! Please try again.');
+    this.http.post('https://localhost:7190/identity/Auth/signup', payload)
+      .subscribe({
+        next: (res: any) => {
+          console.log('Signup successful!', res);
+
+          // ✅ After signup, get plan details using planId
+          if (this.planId) {
+            this.http.get(`https://localhost:7190/api/plans/${this.planId}`)
+              .subscribe({
+                next: (plan: any) => {
+                  console.log('Plan details:', plan);
+
+                  if (plan.name.toLowerCase() === 'free' || plan.price === 0) {
+                    alert('Free plan activated! Redirecting to dashboard...');
+                    window.location.href = '/dashboard';
+                  } else {
+                    // ✅ Paid plan → redirect to Stripe checkout
+                    this.redirectToStripe(plan);
+                  }
+                },
+                error: (err) => {
+                  console.error('Failed to fetch plan details', err);
+                  alert('Could not verify plan details.');
+                }
+              });
           }
-        });
-
-    } else {
-      this.markFormGroupTouched();
-    }
+        },
+        error: (err) => {
+          console.error('Signup failed!', err);
+          alert('Signup failed! Please try again.');
+        }
+      });
+  } else {
+    this.markFormGroupTouched();
   }
+}
 
   markFormGroupTouched() {
     Object.keys(this.signupForm.controls).forEach(key => {
