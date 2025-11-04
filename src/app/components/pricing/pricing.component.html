@@ -114,7 +114,7 @@
               </li>
             </ul>
 
-            <button routerLink="/signup" class="btn w-100 mt-3" 
+            <button routerLink="/signup" [queryParams]="{ planId: '56C20ABE-3174-4E0B-93B7-5F5BCD57D17F' }" class="btn w-100 mt-3" 
                     [class.btn-primary]="selectedCard === 'basic'"
                     [class.btn-outline-primary]="selectedCard !== 'basic'">
               Get Started
@@ -173,6 +173,7 @@
             </ul>
 
             <button class="btn w-100 mt-3" 
+                    routerLink="/signup" [queryParams]="{ planId: '7D9602EE-6597-4E09-9F44-83374E9D15CF' }"
                     [class.btn-primary]="selectedCard === 'standard'"
                     [class.btn-outline-primary]="selectedCard !== 'standard'">
               Get Started
