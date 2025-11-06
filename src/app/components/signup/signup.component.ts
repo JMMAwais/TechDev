@@ -97,7 +97,7 @@ onSubmit() {
           console.log('test planId',this.planId)
           if (this.planId) {
             console.log('test planId-1',this.planId)
-            this.http.get('https://localhost:7190/api/plans/${this.planId}')
+            this.http.get(`https://localhost:7190/api/plans/${this.planId}`)
               .subscribe({
                 next: (plan: any) => {
                   console.log('Plan details:', plan);
