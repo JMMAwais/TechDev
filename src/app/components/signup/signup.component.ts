@@ -94,8 +94,10 @@ onSubmit() {
           console.log('Signup successful!', res);
 
           // ✅ After signup, get plan details using planId
+          console.log('test planId',this.planId)
           if (this.planId) {
-            this.http.get(`https://localhost:7190/api/plans/${this.planId}`)
+            console.log('test planId-1',this.planId)
+            this.http.get('https://localhost:7190/api/plans/${this.planId}')
               .subscribe({
                 next: (plan: any) => {
                   console.log('Plan details:', plan);
@@ -105,7 +107,18 @@ onSubmit() {
                     window.location.href = '/dashboard';
                   } else {
                     // ✅ Paid plan → redirect to Stripe checkout
-                    this.redirectToStripe(plan);
+                   // this.redirectToStripe(plan);
+                    this.http.post('https://localhost:7190/api/payment/create-checkout-session', {
+                    planId: plan.id}).subscribe({
+                       next: (session: any) => {
+                        if (session?.url) {
+                          window.location.href = session.url; 
+                          } else {
+                            alert('Unable to start payment process — no checkout URL returned.');
+                          }
+                        }
+                    });
+
                   }
                 },
                 error: (err) => {
