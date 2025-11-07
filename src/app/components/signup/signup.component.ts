@@ -106,13 +106,12 @@ onSubmit() {
                     alert('Free plan activated! Redirecting to dashboard...');
                     window.location.href = '/dashboard';
                   } else {
-                    // ✅ Paid plan → redirect to Stripe checkout
                    // this.redirectToStripe(plan);
                     this.http.post('https://localhost:7190/api/payment/create-checkout-session', {
                     planId: plan.id}).subscribe({
                        next: (session: any) => {
-                        if (session?.url) {
-                          window.location.href = session.url; 
+                        if (session?.sessionUrl) {
+                          window.location.href = session.sessionUrl; 
                           } else {
                             alert('Unable to start payment process — no checkout URL returned.');
                           }
