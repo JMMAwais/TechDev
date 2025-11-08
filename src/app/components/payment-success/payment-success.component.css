@@ -17,7 +17,7 @@
 }
 
 .card h2 {
-  color: #2e7d32;
+  color:#0d9b9b;
   margin-bottom: 1rem;
 }
 
@@ -26,7 +26,7 @@
   margin-top: 1.5rem;
   padding: 0.8rem 1.5rem;
   border-radius: 8px;
-  background-color: #2e7d32;
+  background-color:  #0d9b9b;
   color: white;
   text-decoration: none;
   font-weight: 500;
@@ -34,5 +34,5 @@
 }
 
 .btn:hover {
-  background-color: #256628;
+  background-color:  #088a8a;
 }

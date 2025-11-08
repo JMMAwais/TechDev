@@ -2,12 +2,19 @@
   <div class="card">
     <h2>{{ message }}</h2>
 
-    <ng-container *ngIf="sessionId">
-      <p><strong>Session ID:</strong> {{ sessionId }}</p>
+    <ng-container *ngIf="transactionRef; else loading">
+      <p><strong>Transaction Reference:</strong> {{ transactionRef }}</p>
+      <p><strong>Amount Paid:</strong> {{ amount | currency:'PKR' }}</p>
+      <p><strong>Date:</strong> {{ date | date:'medium' }}</p>
       <p>You will receive a confirmation email shortly.</p>
     </ng-container>
+
+    <ng-template #loading>
+      <p>Verifying your payment, please wait...</p>
+    </ng-template>
 
     <a routerLink="/" class="btn">Go to Dashboard</a>
   </div>
 </div>
+
 
