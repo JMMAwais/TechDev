@@ -4,9 +4,11 @@ import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component'
 import { NgModule } from '@angular/core';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
 
 export const routes: Routes = [
 
+  { path: 'payment/success', component: PaymentSuccessComponent },
   { path: 'pricing', component: PricingComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },

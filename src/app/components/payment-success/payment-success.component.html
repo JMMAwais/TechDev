@@ -1,0 +1,13 @@
+<div class="success-container">
+  <div class="card">
+    <h2>{{ message }}</h2>
+
+    <ng-container *ngIf="sessionId">
+      <p><strong>Session ID:</strong> {{ sessionId }}</p>
+      <p>You will receive a confirmation email shortly.</p>
+    </ng-container>
+
+    <a routerLink="/" class="btn">Go to Dashboard</a>
+  </div>
+</div>
+
