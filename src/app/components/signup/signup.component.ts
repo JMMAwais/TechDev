@@ -93,8 +93,9 @@ onSubmit() {
         next: (res: any) => {
           console.log('Signup successful!', res);
 
+           const identifier = res?.identifier;
           // ✅ After signup, get plan details using planId
-          console.log('test planId',this.planId)
+ 
           if (this.planId) {
             console.log('test planId-1',this.planId)
             this.http.get(`https://localhost:7190/api/plans/${this.planId}`)
@@ -108,7 +109,7 @@ onSubmit() {
                   } else {
                    // this.redirectToStripe(plan);
                     this.http.post('https://localhost:7190/api/payment/create-checkout-session', {
-                    planId: plan.id}).subscribe({
+                    planId: plan.id, tenantIdentifier: identifier}).subscribe({
                        next: (session: any) => {
                         if (session?.sessionUrl) {
                           window.location.href = session.sessionUrl; 
