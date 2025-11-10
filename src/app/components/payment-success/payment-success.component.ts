@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-payment-success',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,HttpClientModule],
   templateUrl: './payment-success.component.html',
   styleUrls: ['./payment-success.component.css']
 })
@@ -21,7 +21,7 @@ export class PaymentSuccessComponent implements OnInit {
   ngOnInit(): void {
     const sessionId = this.route.snapshot.queryParamMap.get('session_id');
 
-    if (sessionId) {
+   if (sessionId) {
       // Backend API ko call karke payment details confirm karo
       this.http.get<any>(`https://localhost:7190/api/payments/verify?sessionId=${sessionId}`)
         .subscribe({
