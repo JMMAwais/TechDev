@@ -23,7 +23,7 @@ export class PaymentSuccessComponent implements OnInit {
 
     if (sessionId) {
       // Backend API ko call karke payment details confirm karo
-      this.http.get<any>(`/api/payments/verify?sessionId=${sessionId}`)
+      this.http.get<any>(`https://localhost:7190/api/payments/verify?sessionId=${sessionId}`)
         .subscribe({
           next: (res) => {
             this.transactionRef = res.transactionRef;
