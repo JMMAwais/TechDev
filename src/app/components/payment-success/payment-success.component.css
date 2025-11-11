@@ -41,8 +41,8 @@
 .value {
   color: #555;
   font-size: 0.9rem;
-  text-align: right;
-  max-width: 240px;
+  text-align: left;
+  max-width: 300px;
   word-wrap: break-word; /* for long transaction ref */
   overflow-wrap: anywhere;
 }
