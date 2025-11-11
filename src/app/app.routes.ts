@@ -12,7 +12,7 @@ export const routes: Routes = [
   { path: 'pricing', component: PricingComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  // { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent },
   // { path: '**', redirectTo: '' } // Wildcard route
 ];
 
