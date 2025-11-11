@@ -12,7 +12,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class PaymentSuccessComponent implements OnInit {
   message = 'Payment Successful 🎉';
-  transactionRef?: string;
+  refSessionId?: string;
   amount?: number;
   date?: string;
 
@@ -26,9 +26,9 @@ export class PaymentSuccessComponent implements OnInit {
       this.http.get<any>(`https://localhost:7190/api/payment/verify?sessionId=${sessionId}`)
         .subscribe({
           next: (res) => {
-            this.transactionRef = res.transactionRef;
+            this.refSessionId = res.transactionIds;
             this.amount = res.amount;
-            this.date = res.date;
+            this.date = res.paymentDate;
           },
           error: (err) => console.error('Payment verification failed:', err)
         });
