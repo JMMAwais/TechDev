@@ -1,6 +1,6 @@
 .success-container {
   display: flex;
-  /* justify-content: center; */
+  justify-content: center; 
   align-items: center;
   height: 80vh;
   background: #f6f8fa;
@@ -45,6 +45,7 @@
   max-width: 500px;
   word-wrap: break-word; /* for long transaction ref */
   overflow-wrap: anywhere;
+  padding-right: 5px;
 }
 
 .note {
