@@ -1,6 +1,6 @@
 .success-container {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   height: 80vh;
   background: #f6f8fa;
@@ -41,15 +41,15 @@
 .value {
   color: #555;
   font-size: 0.9rem;
-  text-align: right;
-  max-width: 350px;
+  text-align: left;
+  max-width: 500px;
   word-wrap: break-word; /* for long transaction ref */
   overflow-wrap: anywhere;
 }
 
 .note {
   margin-top: 1.5rem;
-  font-size: 0.9rem;
+  font-size: 1.5rem;
   color: #666;
   text-align: center;
 }
