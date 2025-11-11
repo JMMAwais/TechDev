@@ -26,7 +26,7 @@ export class PaymentSuccessComponent implements OnInit {
       this.http.get<any>(`https://localhost:7190/api/payment/verify?sessionId=${sessionId}`)
         .subscribe({
           next: (res) => {
-            this.refSessionId = res.transactionIds;
+            this.refSessionId = res.transactionId;
             this.amount = res.amount;
             this.date = res.paymentDate;
           },
