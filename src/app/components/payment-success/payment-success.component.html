@@ -6,7 +6,7 @@
       <p class="value"><strong class="label">Transaction Ref:</strong> {{ refSessionId }}</p>
       <p class="value" ><strong class="label" >Amount Paid:</strong> {{ amount | currency:'$' }}</p>
       <p class="value" ><strong class="label" >Date:</strong> {{ date | date:'medium' }}</p>
-      <p>You will receive a confirmation email shortly.</p>
+      <p class="note">You will receive a confirmation email shortly.</p>
     </ng-container>
 
     <ng-template #loading>
