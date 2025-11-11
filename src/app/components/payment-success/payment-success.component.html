@@ -3,9 +3,9 @@
     <h2>{{ message }}</h2>
 
     <ng-container *ngIf="refSessionId; else loading">
-      <p class="value"><strong>Transaction Ref:</strong> {{ refSessionId }}</p>
-      <p><strong>Amount Paid:</strong> {{ amount | currency:'$' }}</p>
-      <p><strong>Date:</strong> {{ date | date:'medium' }}</p>
+      <p class="value"><strong class="label">Transaction Ref:</strong> {{ refSessionId }}</p>
+      <p class="value" ><strong class="label" >Amount Paid:</strong> {{ amount | currency:'$' }}</p>
+      <p class="value" ><strong class="label" >Date:</strong> {{ date | date:'medium' }}</p>
       <p>You will receive a confirmation email shortly.</p>
     </ng-container>
 
@@ -13,8 +13,8 @@
       <p>Verifying your payment, please wait...</p>
     </ng-template>
 
-    <a routerLink="/Dashboard" class="btn">Go to Dashboard</a>
+    <a routerLink="/" class="btn">Go to Dashboard</a>
   </div>
 </div>
 
-
+ 
