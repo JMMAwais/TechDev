@@ -2,8 +2,8 @@
   <div class="card">
     <h2>{{ message }}</h2>
 
-    <ng-container *ngIf="transactionRef; else loading">
-      <p><strong>Transaction Reference:</strong> {{ transactionRef }}</p>
+    <ng-container *ngIf="refSessionId; else loading">
+      <p><strong>Transaction Reference:</strong> {{ refSessionId }}</p>
       <p><strong>Amount Paid:</strong> {{ amount | currency:'PKR' }}</p>
       <p><strong>Date:</strong> {{ date | date:'medium' }}</p>
       <p>You will receive a confirmation email shortly.</p>
