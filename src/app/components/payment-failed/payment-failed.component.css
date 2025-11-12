@@ -1,0 +1,56 @@
+.failure-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background: #f6f8fa;
+}
+
+.card {
+  background: #fff;
+  padding: 2rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 480px;
+  max-width: 90%;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.icon {
+  font-size: 2.5rem;
+  color: #d32f2f;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  color: #d32f2f;
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.error-msg {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.hint-msg {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.retry-btn {
+  padding: 0.6rem 1.8rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #d32f2f;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.retry-btn:hover {
+  background-color: #b71c1c;
+}

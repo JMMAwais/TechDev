@@ -36,6 +36,7 @@
   font-weight: 600;
   color: #333;
   font-size: 0.95rem;
+  margin-right: 20px;
 }
 
 .value {
@@ -45,12 +46,12 @@
   max-width: 500px;
   word-wrap: break-word; /* for long transaction ref */
   overflow-wrap: anywhere;
-  padding-right: 5px;
+  padding-right: 15px;
 }
 
 .note {
   margin-top: 1.5rem;
-  font-size: 1.5rem;
+  font-size: 1.0rem;
   color: #666;
   text-align: center;
 }
