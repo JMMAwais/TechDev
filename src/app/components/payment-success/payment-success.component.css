@@ -36,7 +36,7 @@
   font-weight: 600;
   color: #333;
   font-size: 0.95rem;
-  margin-right: 20px;
+  margin-right: 30px;
 }
 
 .value {
@@ -75,7 +75,7 @@
   background-color: #088a8a;
 }
 .val-text {
-  margin-left: auto; /* pushes it fully to the right */
+  margin-left: auto; 
   text-align: right;
   flex-shrink: 0; /* prevent value from wrapping early */
   word-wrap: break-word;
