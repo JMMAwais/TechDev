@@ -74,4 +74,11 @@
 .btn:hover {
   background-color: #088a8a;
 }
-
+.val-text {
+  margin-left: auto; /* pushes it fully to the right */
+  text-align: right;
+  flex-shrink: 0; /* prevent value from wrapping early */
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  max-width: 60%; /* prevents it from overflowing card */
+}
