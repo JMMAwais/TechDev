@@ -1,0 +1,87 @@
+<nav class="navbar navbar-expand-lg bg-white shadow-sm px-4">
+  <div class="container-fluid">
+    <!-- Left side title -->
+    <a class="navbar-brand fw-bold" href="#">Dashboard</a>
+
+    <!-- Toggler button for mobile -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#topbarNav"
+      aria-controls="topbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Right side -->
+    <div class="collapse navbar-collapse justify-content-end" id="topbarNav">
+      <div class="d-flex align-items-center gap-3">
+
+        <!-- Search -->
+        <div class="search-container d-flex align-items-center bg-light rounded px-2">
+          <i class="fa fa-search text-muted"></i>
+          <input
+            type="text"
+            class="form-control border-0 bg-transparent ms-2"
+            placeholder="Search anything"
+          />
+        </div>
+
+        <!-- Notifications -->
+        <div class="position-relative">
+          <i class="fa fa-bell fs-5"></i>
+          <span
+            class="badge bg-info rounded-circle position-absolute top-0 start-100 translate-middle"
+          >6</span>
+        </div>
+
+        <!-- User Dropdown -->
+        <div class="dropdown">
+          <a
+            class="d-flex align-items-center text-decoration-none dropdown-toggle"
+            href="#"
+            role="button"
+            id="userMenu"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <div
+              class="avatar bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2"
+              style="width: 36px; height: 36px;"
+            >
+              OO
+            </div>
+            <span class="fw-medium text-dark me-1">Oscar Hansen</span>
+
+            <!-- ✅ Only this arrow will appear -->
+            <i class="fa fa-chevron-down text-secondary" style="font-size: 0.8rem;"></i>
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm mt-2" aria-labelledby="userMenu">
+            <li>
+              <a class="dropdown-item" href="#">
+                <i class="fa fa-gear me-2"></i>Account Settings
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">
+                <i class="fa fa-user me-2"></i>Profile
+              </a>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item text-danger" href="#">
+                <i class="fa fa-lock me-2"></i>Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</nav>
+

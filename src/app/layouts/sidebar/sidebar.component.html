@@ -1,0 +1,51 @@
+<nav
+  class="sidebar d-flex flex-column p-3 text-white"
+  [class.collapsed]="isCollapsed"
+>
+  <!-- Brand / Logo -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <a href="#" class="navbar-brand fw-bold fs-5 text-white mb-0">MyApp</a>
+    <button class="btn btn-sm btn-outline-light d-lg-none" (click)="toggleSidebar()">
+      <i class="fa fa-times"></i>
+    </button>
+  </div>
+
+  <!-- Nav Links -->
+  <ul class="nav flex-column gap-2">
+    <li class="nav-item">
+      <a href="#" class="nav-link active text-white">
+        <i class="fa fa-home me-2"></i> <span>Dashboard</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link text-white">
+        <i class="fa fa-chart-bar me-2"></i> <span>Analytics</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link text-white">
+        <i class="fa fa-folder me-2"></i> <span>Projects</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link text-white">
+        <i class="fa fa-users me-2"></i> <span>Team</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link text-warning">
+        <i class="fa fa-sign-out-alt me-2"></i> <span>Logout</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- Sidebar toggle button -->
+<button
+  class="btn btn-light toggle-btn d-none d-lg-block shadow-sm"
+  (click)="toggleSidebar()"
+>
+  <i class="fa" [class.fa-bars]="isCollapsed" [class.fa-times]="!isCollapsed"></i>
+</button>
+
+

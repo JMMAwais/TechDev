@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component'
 import { NgModule } from '@angular/core';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 export const routes: Routes = [
 
@@ -13,7 +14,16 @@ export const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
-  // { path: '**', redirectTo: '' } // Wildcard route
+  { path: '**', redirectTo: '' }, // Wildcard route
+  { path: '',
+    component: AdminLayoutComponent,
+    children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent },
+      // { path: 'students', component: StudentsComponent },
+      // { path: 'employees', component: EmployeesComponent },
+    ],
+  }
 ];
 
 @NgModule({
