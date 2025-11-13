@@ -3,7 +3,7 @@
   <!-- Dashboard Summary Cards -->
 <div class="summary-cards">
   <div class="summary-card">
-    <div class="card-icon students-icon"></div>
+    <div class="card-icon students-icon"><i class="fa-solid fa-user-graduate"></i></div>
     <div class="card-info">
       <div class="card-title">Enrolled Students</div>
       <div class="card-value">1,245</div>
@@ -11,7 +11,7 @@
   </div>
 
   <div class="summary-card">
-    <div class="card-icon teachers-icon"></div>
+    <div class="card-icon teachers-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
     <div class="card-info">
       <div class="card-title">Active Teachers</div>
       <div class="card-value">86</div>
@@ -19,7 +19,7 @@
   </div>
 
   <div class="summary-card">
-    <div class="card-icon staff-icon"></div>
+    <div class="card-icon staff-icon"><i class="fa-solid fa-users"></i></div>
     <div class="card-info">
       <div class="card-title">Support Staff</div>
       <div class="card-value">34</div>
@@ -27,7 +27,7 @@
   </div>
 
   <div class="summary-card">
-    <div class="card-icon awards-icon"></div>
+    <div class="card-icon awards-icon"><i class="fa-solid fa-trophy"></i></div>
     <div class="card-info">
       <div class="card-title">Total Awards</div>
       <div class="card-value">152</div>
@@ -40,37 +40,27 @@
     <!-- Main Content Area -->
     <div class="main-content">
       <!-- Student Performance Section -->
-      <div class="card performance-card">
-        <h2>Student Performance</h2>
-        <div class="grade-tabs">
-          <button class="grade-tab active">Grade 7</button>
-          <button class="grade-tab">Grade 8</button>
-          <button class="grade-tab">Grade 9</button>
-        </div>
-        <div class="performance-section">
-          <h3>Last Semester</h3>
-          <div class="grade-bars">
-            <div class="grade-bar">
-              <div class="bar-label">Grade 7</div>
-              <div class="bar-container">
-                <div class="bar-fill" style="height: 75%"></div>
-              </div>
-            </div>
-            <div class="grade-bar">
-              <div class="bar-label">Grade 8</div>
-              <div class="bar-container">
-                <div class="bar-fill" style="height: 65%"></div>
-              </div>
-            </div>
-            <div class="grade-bar">
-              <div class="bar-label">Grade 9</div>
-              <div class="bar-container">
-                <div class="bar-fill" style="height: 85%"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+   <div class="card performance-card">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">Student Performance</h2>
+    <div class="dropdown">
+      <button
+        class="btn btn-light border dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+      >
+        Last Semester
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Last Semester</a></li>
+        <li><a class="dropdown-item" href="#">This Semester</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <canvas id="studentPerformanceChart"></canvas>
+</div>
+
 
       <!-- Earnings & Expenses Section -->
       <div class="card finance-card">

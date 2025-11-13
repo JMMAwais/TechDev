@@ -1,84 +1,13 @@
-.success-container {
-  display: flex;
-  justify-content: center; 
-  align-items: center;
-  height: 80vh;
-  background: #f6f8fa;
-}
-
-.card {
-  background: white;
-  padding: 2rem 3rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  text-align: left; /* text left aligned overall */
-  max-width: 600px;
-  width: 100%;
-  font-family: "Segoe UI", sans-serif;
-}
-
-.card h2 {
-  color: #0d9b9b;
-  margin-bottom: 1.8rem;
-  text-align: center; /* heading centered */
-  font-size: 1.8rem;
-  font-weight: 600;
-}
-
-.info-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin: 0.8rem 0;
-}
-
-.label {
-  font-weight: 600;
-  color: #333;
-  font-size: 0.95rem;
-  margin-right: 100px;
-}
-
-.value {
-  color: #555;
-  font-size: 0.9rem;
-  text-align: left;
-  justify-content: space-between;
-  max-width: 500px;
-  word-wrap: break-word; /* for long transaction ref */
-  overflow-wrap: anywhere;
-  
-}
-
-.note {
-  margin-top: 1.5rem;
-  font-size: 1.1rem;
-  color: #666;
-  text-align: center;
-}
-
-.btn {
-  display: block;
-  margin: 1.5rem auto 0;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  background-color: #0d9b9b;
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  transition: background 0.3s ease;
-  text-align: center;
-  width: fit-content;
-}
-
-.btn:hover {
-  background-color: #088a8a;
-}
-.val-text {
-  margin-left: auto; 
-  text-align: right;
-  flex-shrink: 0; /* prevent value from wrapping early */
+.word-break {
   word-wrap: break-word;
   overflow-wrap: anywhere;
-  max-width: 60%; /* prevents it from overflowing card */
+}
+
+@media (max-width: 576px) {
+  .card h2 {
+    font-size: 1.4rem;
+  }
+  .btn {
+    width: 100%;
+  }
 }

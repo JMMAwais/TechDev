@@ -419,3 +419,23 @@
   font-weight: 600;
   color: #111827;
 }
+
+
+.performance-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  height: 400px;
+}
+
+canvas {
+  width: 100% !important;
+  height: 300px !important;
+}
+
+h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1f2937;
+}
