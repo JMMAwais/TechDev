@@ -63,29 +63,13 @@
 
 
       <!-- Earnings & Expenses Section -->
-      <div class="card finance-card">
-        <h2>Earnings</h2>
-        <div class="finance-section">
-          <h3>Last Year</h3>
-          <div class="month-section">
-            <h4>July 2014</h4>
-            <div class="finance-bars">
-              <div class="finance-item">
-                <div class="finance-label">Earnings</div>
-                <div class="finance-bar-container">
-                  <div class="finance-bar earnings" style="width: 70%"></div>
-                </div>
-              </div>
-              <div class="finance-item">
-                <div class="finance-label">Expenses</div>
-                <div class="finance-bar-container">
-                  <div class="finance-bar expenses" style="width: 45%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="card finance-card">
+  <h2>Earnings</h2>
+  <div class="dropdown">
+    <button class="btn">Last Year</button>
+  </div>
+  <canvas #earningsChart></canvas>
+</div>
 
       <!-- Calendar Section -->
       <div class="card calendar-card">

@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, HostListener } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Chart, registerables } from 'chart.js';
+import { Chart, ChartConfiguration, ChartType, registerables } from 'chart.js';
+import { config } from 'rxjs';
 Chart.register(...registerables);
 
 @Component({
@@ -11,8 +12,12 @@ Chart.register(...registerables);
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements AfterViewInit { 
+ @ViewChild('earningsChart') earningsChart!: ElementRef<HTMLCanvasElement>;
+   chart!: Chart;
+
   ngAfterViewInit(): void {
     this.createStudentPerformanceChart();
+     this.createChart();
   }
   createStudentPerformanceChart() {
     const ctx = document.getElementById('studentPerformanceChart') as HTMLCanvasElement;
@@ -25,14 +30,14 @@ export class DashboardComponent implements AfterViewInit {
           {
             label: 'Grade 7',
             data: [82, 74, 91, 86, 79, 88],
-            backgroundColor: '#5de2dcd7', // blue
+            backgroundColor: '#f9a8d4', // blue
             borderRadius: 6,
             barThickness: 16
           },
           {
             label: 'Grade 8',
             data: [72, 85, 77, 83, 68, 80],
-            backgroundColor: '#b979f5ff', // pink
+            backgroundColor: '#a78bfa', // pink
             borderRadius: 6,
             barThickness: 16
           },
@@ -86,5 +91,68 @@ export class DashboardComponent implements AfterViewInit {
         }
       }
     });
+
+
+  }
+
+
+   createChart() {
+    const data = {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      datasets: [
+        {
+          label: 'Earnings',
+          data: [3500, 4200, 4000, 4600, 4800, 5200, 5785, 5100, 4700, 4900, 5300, 5500],
+          borderColor: '#a78bfa',
+          backgroundColor: 'rgba(0, 123, 255, 0.2)',
+          fill: true,
+          tension: 0.4
+        },
+        {
+          label: 'Expenses',
+          data: [2800, 3000, 3200, 3400, 3700, 4000, 4020, 4100, 3900, 4100, 4200, 4400],
+          borderColor: '#f9a8d4',
+          backgroundColor: 'rgba(255, 64, 129, 0.2)',
+          fill: true,
+          tension: 0.4
+        }
+      ]
+    };
+
+
+
+
+   const config: ChartConfiguration = {
+      type: 'line' as ChartType,
+      data,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          tooltip: {
+            mode: 'index',
+            intersect: false,
+            callbacks: {
+              title: (items) => `July 2034`, // Example static tooltip title
+              label: (context) => `${context.dataset.label}: $${context.formattedValue}`
+            }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              callback: (val) => `$${val}`
+            },
+            grid: { color: 'rgba(200,200,200,0.2)' }
+          },
+          x: {
+            grid: { display: false }
+          }
+        }
+      }
+    };
+
+    this.chart = new Chart(this.earningsChart.nativeElement, config);
   }
 }
