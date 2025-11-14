@@ -1,8 +1,8 @@
 .dashboard-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  background-color: #f5f7fa;
+  height: 200vh;
+  background-color: #ffffff;
 }
 
 .dashboard-header {
@@ -399,9 +399,9 @@
 }
 
 /* Example colors for each card */
-.students-icon { background-color: #1e3a8a; color: white; }
+.students-icon { background-color: #04bdbd; color: white; }
 .teachers-icon { background-color: #a78bfa; color: white; }
-.staff-icon { background-color: #1e3a8a; color: white; }
+.staff-icon { background-color: #f52f60ff; color: white; }
 .awards-icon { background-color: #f9a8d4; color: white; }
 
 .card-info {

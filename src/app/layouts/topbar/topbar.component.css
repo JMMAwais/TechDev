@@ -66,6 +66,7 @@
 .notification-icon .icon {
   font-size: 1.2rem;
   color: #666;
+  padding-left: 20px;
 }
 
 .notification-icon .badge {

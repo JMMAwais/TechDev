@@ -32,21 +32,21 @@ export class DashboardComponent implements AfterViewInit {
             data: [82, 74, 91, 86, 79, 88],
             backgroundColor: '#f9a8d4', // blue
             borderRadius: 6,
-            barThickness: 16
+            barThickness: 12
           },
           {
             label: 'Grade 8',
             data: [72, 85, 77, 83, 68, 80],
-            backgroundColor: '#a78bfa', // pink
+            backgroundColor: '#f52f60ff', // pink
             borderRadius: 6,
-            barThickness: 16
+            barThickness: 12
           },
           {
             label: 'Grade 9',
             data: [90, 78, 88, 92, 84, 95],
-            backgroundColor: '#0b365efb', // violet
+            backgroundColor: '#04bdbd', // violet
             borderRadius: 6,
-            barThickness: 16
+            barThickness: 12
           }
         ]
       },
@@ -103,7 +103,7 @@ export class DashboardComponent implements AfterViewInit {
         {
           label: 'Earnings',
           data: [3500, 4200, 4000, 4600, 4800, 5200, 5785, 5100, 4700, 4900, 5300, 5500],
-          borderColor: '#a78bfa',
+          borderColor: '#04bdbd',
           backgroundColor: 'rgba(0, 123, 255, 0.2)',
           fill: true,
           tension: 0.4
