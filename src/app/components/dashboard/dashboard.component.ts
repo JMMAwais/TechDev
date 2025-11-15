@@ -30,14 +30,14 @@ export class DashboardComponent implements AfterViewInit {
           {
             label: 'Grade 7',
             data: [82, 74, 91, 86, 79, 88],
-            backgroundColor: '#f9a8d4', // blue
+            backgroundColor: '#7C83FD', // blue
             borderRadius: 6,
             barThickness: 12
           },
           {
             label: 'Grade 8',
             data: [72, 85, 77, 83, 68, 80],
-            backgroundColor: '#f52f60ff', // pink
+            backgroundColor: '#6EE7E7', // pink
             borderRadius: 6,
             barThickness: 12
           },

@@ -1,5 +1,5 @@
 <div class="container-fluid bg-light min-vh-100 d-flex justify-content-center align-items-center">
-  <div class="card shadow-lg border-0 p-4 p-md-5 text-center" style="max-width: 600px; width: 100%;">
+  <div class="card shadow-lg border-0 p-4 p-md-5 text-center" style="max-width: 550px; width: 100%;">
     <h2 class="text-success fw-semibold mb-4">{{ message }}</h2>
 
     <ng-container *ngIf="refSessionId; else loading">
@@ -27,7 +27,7 @@
       </div>
     </ng-template>
 
-    <a routerLink="/dashboard" class="btn btn-success mt-4 px-4 py-2 fw-semibold">
+    <a routerLink="/dashboard" class="btn mt-4 px-4 py-2 fw-semibold" style="color:04bdbd">
       <i class="bi bi-speedometer2 me-2"></i> Go to Dashboard
     </a>
   </div>
