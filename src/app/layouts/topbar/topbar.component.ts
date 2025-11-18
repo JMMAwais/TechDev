@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-topbar',
@@ -8,7 +8,19 @@ import { Component, HostListener } from '@angular/core';
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.css'
 })
-export class TopbarComponent {
+export class TopbarComponent implements OnInit {
+dropdownOpen = false;
+
+toggleDropdown(event: Event) {
+  this.dropdownOpen = !this.dropdownOpen;
+  event.stopPropagation();
+}
+
+ngOnInit() {
+  document.addEventListener('click', () => {
+    this.dropdownOpen = false;
+  });
 
 
+}
 }

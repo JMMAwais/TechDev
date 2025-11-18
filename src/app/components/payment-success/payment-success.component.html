@@ -1,34 +1,14 @@
-<div class="container-fluid bg-light min-vh-100 d-flex justify-content-center align-items-center">
-  <div class="card shadow-lg border-0 p-4 p-md-5 text-center" style="max-width: 550px; width: 100%;">
-    <h2 class="text-success fw-semibold mb-4">{{ message }}</h2>
+<div class="container">
 
-    <ng-container *ngIf="refSessionId; else loading">
-      <div class="mb-3 text-start">
-        <div class="d-flex justify-content-between flex-wrap mb-2">
-          <span class="fw-semibold text-dark">Transaction Ref:</span>
-          <span class="text-muted word-break">{{ refSessionId }}</span>
-        </div>
-        <div class="d-flex justify-content-between flex-wrap mb-2">
-          <span class="fw-semibold text-dark">Amount Paid:</span>
-          <span class="text-muted">{{ amount | currency:'$' }}</span>
-        </div>
-        <div class="d-flex justify-content-between flex-wrap mb-2">
-          <span class="fw-semibold text-dark">Date:</span>
-          <span class="text-muted">{{ date | date:'medium' }}</span>
-        </div>
-      </div>
-
-      <p class="text-secondary mt-3">You will receive a confirmation email shortly.</p>
-    </ng-container>
-
-    <ng-template #loading>
-      <div class="alert alert-info text-center mb-3">
-        <i class="bi bi-hourglass-split me-2"></i> Verifying your payment, please wait...
-      </div>
-    </ng-template>
-
-    <a routerLink="/dashboard" class="btn mt-4 px-4 py-2 fw-semibold" style="color:04bdbd">
-      <i class="bi bi-speedometer2 me-2"></i> Go to Dashboard
-    </a>
+  <div *ngIf="isVerifying" class="verifying-box">
+    <p>Please wait... Your payment is verifying.</p>
+    <div class="spinner"></div>
   </div>
+
+  <div *ngIf="paymentVerified" class="verified-box">
+    <h2>Payment Verified!</h2>
+    <button routerLink="/dashboard">Go to Dashboard</button>
+  </div>
+
 </div>
+

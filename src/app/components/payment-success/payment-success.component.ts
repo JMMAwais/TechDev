@@ -1,38 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { interval, Subscription } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-payment-success',
   standalone: true,
-  imports: [CommonModule,HttpClientModule],
   templateUrl: './payment-success.component.html',
   styleUrls: ['./payment-success.component.css']
 })
-export class PaymentSuccessComponent implements OnInit {
-  message = 'Payment Successful 🎉';
-  refSessionId?: string;
-  amount?: number;
-  date?: string;
+export class PaymentSuccessComponent implements OnInit, OnDestroy {
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  isVerifying = true;
+  paymentVerified = false;
+  sub!: Subscription;
+
+  sessionId!: string; 
+
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    const sessionId = this.route.snapshot.queryParamMap.get('session_id');
+    this.sessionId = new URLSearchParams(window.location.search).get('session_id')!;
 
-   if (sessionId) {
-      // Backend API ko call karke payment details confirm karo
-      this.http.get<any>(`https://localhost:7190/api/payment/verify?sessionId=${sessionId}`)
-        .subscribe({
-          next: (res) => {
-             console.log('API Response:', res);
-            this.refSessionId = res.transactionId;
-            this.amount = res.amount;
-            this.date = res.paymentDate;
-          },
-          error: (err) => console.error('Payment verification failed:', err)
-        });
-    }
+    this.sub = interval(2000).pipe(
+      switchMap(() => this.http.get(`/api/payment/status/${this.sessionId}`))
+    )
+    .subscribe((res: any) => {
+      if (res.status === 'Verified') {
+        this.isVerifying = false;
+        this.paymentVerified = true;
+        this.sub.unsubscribe();
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.sub) this.sub.unsubscribe();
   }
 }

@@ -6,6 +6,8 @@ import { NgModule } from '@angular/core';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { StaffLayoutComponent } from './layouts/Staff/staff-layout/staff-layout.component';
+import { TopbarComponent } from './layouts/topbar/topbar.component';
 
 export const routes: Routes = [
 
@@ -14,7 +16,14 @@ export const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   // { path: 'dashboard', component: DashboardComponent },
-  { path: '**', redirectTo: '' }, // Wildcard route
+  {
+          path: 'dashboard-staff',
+          component: StaffLayoutComponent,
+          // children: [
+          //   { path: 'dashboard-staff',component: TopbarComponent  }
+          // ]
+        },
+  // Wildcard route
   { path: '',
     component: AdminLayoutComponent,
     children: [
@@ -22,8 +31,11 @@ export const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       // { path: 'students', component: StudentsComponent },
       // { path: 'employees', component: EmployeesComponent },
+     
     ],
-  }
+  },
+   
+        { path: '**', redirectTo: '' }, 
 ];
 
 @NgModule({

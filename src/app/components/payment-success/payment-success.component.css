@@ -1,13 +1,23 @@
-.word-break {
-  word-wrap: break-word;
-  overflow-wrap: anywhere;
+.container {
+  text-align: center;
+  padding: 5rem;
 }
 
-@media (max-width: 576px) {
-  .card h2 {
-    font-size: 1.4rem;
-  }
-  .btn {
-    width: 100%;
-  }
+.verifying-box {
+  font-size: 22px;
+  color: #444;
+}
+
+.spinner {
+  margin: 20px auto;
+  width: 50px;
+  height: 50px;
+  border: 6px solid #ddd;
+  border-top: 6px solid #4A90E2;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }

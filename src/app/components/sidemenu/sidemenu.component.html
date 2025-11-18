@@ -1,0 +1,62 @@
+<div class="sidebar" [class.collapsed]="isCollapsed">
+    
+  <div class="sidebar-top">
+    <div class="logo-wrapper">
+      <img 
+        *ngIf="logoUrl; else noLogo" 
+        [src]="logoUrl"
+        class="logo-img"
+        alt="Logo"
+      />
+
+      <ng-template #noLogo>
+        <div class="logo-text" [class.hidden]="isCollapsed">Logo</div>
+      </ng-template>
+    </div>
+
+    <div class="sidebar-toggle" (click)="toggleMenu()">
+      <i [class]="isCollapsed ? 'fa fa-times' : 'fa fa-bars'"></i>
+    </div>
+  </div>
+
+  <ul class="menu-list">
+    <li>
+      <a 
+        routerLink="/dashboard-staff" 
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <i class="fa fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+
+    <li>
+      <a 
+        routerLink="/classes" 
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <i class="fas fa-chalkboard-teacher"></i>
+        <span>Classes</span>
+      </a>
+    </li>
+
+    <li>
+      <a 
+        routerLink="/subjects" 
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <i class="fas fa-book-open"></i>
+        <span>Subjects</span>
+      </a>
+    </li>
+     <li>
+      <a routerLink="/team" routerLinkActive="active">
+        <i class="fa fa-users"></i>
+        <span>Staff</span>
+      </a>
+    </li>
+  </ul>
+</div>

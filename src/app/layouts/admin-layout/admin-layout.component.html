@@ -1,9 +1,19 @@
-<app-sidebar></app-sidebar>
+<div class="layout" [class.collapsed]="isSidebarCollapsed">
 
-<div class="main-content">
-  <app-topbar></app-topbar>
+  <!-- SIDEBAR -->
+  <app-sidebar
+    [isCollapsed]="isSidebarCollapsed">
+  </app-sidebar>
 
-  <div class="content-wrapper">
-    <router-outlet></router-outlet>
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- TOPBAR -->
+ 
+
+    <div class="content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+
   </div>
 </div>

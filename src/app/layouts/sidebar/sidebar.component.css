@@ -1,88 +1,78 @@
-/* Sidebar base */
+/* SIDEBAR */
 .sidebar {
-  background: #fffefe; /* ✅ White background */
   width: 250px;
+  background: #fff;
+  padding-top: 20px;
   height: 100vh;
   position: fixed;
-  top: 0;
   left: 0;
-  z-index: 1030;
-  /* overflow-y: auto; */
-  transition: all 0.3s ease;
-  border-right: 1px solid #e5e5e5; /* light border for separation */
+  top: 0;
+  border-right: 1px solid #eee;
+  transition: width .3s;
 }
 
-/* Collapsed state */
+/* COLLAPSED */
 .sidebar.collapsed {
   width: 70px;
 }
 
-/* Hide text when collapsed */
-.sidebar.collapsed .nav-link span,
-.sidebar.collapsed .navbar-brand {
+.sidebar.collapsed a span {
   display: none;
 }
 
-.sidebar.collapsed .nav-link i {
+.sidebar.collapsed a i {
   margin-right: 0;
   text-align: center;
   width: 100%;
 }
 
-/* Nav links */
-.nav-link {
+/* MENU */
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li a {
   display: flex;
   align-items: center;
-  color: #1f1d1d; /* ✅ Black text */
-  padding: 10px 12px;
-  border-radius: 0.375rem;
-  transition: background 0.2s ease, color 0.2s ease;
+  padding: 12px 18px;
+  color: #000;               /* <-- black icon/text restored */
+  text-decoration: none;
   font-weight: 500;
-  
+  gap: 12px;
+  transition: .2s;
 }
 
-/* Hover and Active states */
-.nav-link:hover {
-  background-color: rgba(0, 128, 128, 0.1); /* light teal background on hover */
-  color: #04bdbd; /* ✅ teal text on hover */
+/* Hover */
+.menu li a:hover {
+  background: rgba(4,189,189,0.1);
+  color: #04bdbd;
 }
 
-.nav-link.active {
-  background-color: #04bdbd; /* ✅ teal background when active */
-  color: white; /* white text when active */
+/* ACTIVE LINK */
+.menu li a.active {
+  background: #04bdbd !important;
+  color: #fff !important;    /* <-- correct active blue/teal */
 }
 
-/* Ensure icons have spacing */
-.nav-link i {
-  margin-right: 10px;
+.menu li a.active i {
+  color: #fff !important;
 }
 
-/* Toggle button (for desktop) */
-.toggle-btn {
+/* TOGGLE BUTTON */
+.toggle {
   position: fixed;
-  top: 15px;
   left: 260px;
+  top: 20px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 8px;
   border: none;
-  z-index: 1040;
-  transition: left 0.3s ease;
-  background: #ffffff;
-  color: #000;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 10px rgba(0,0,0,.1);
+  transition: left .3s;
 }
 
-.sidebar.collapsed ~ .toggle-btn {
+.sidebar.collapsed ~ .toggle {
   left: 80px;
-}
-
-/* Responsive for smaller screens */
-@media (max-width: 992px) {
-  .sidebar {
-    left: -250px;
-  }
-  .sidebar.collapsed {
-    left: 0;
-  }
-  .toggle-btn {
-    left: 15px;
-  }
 }

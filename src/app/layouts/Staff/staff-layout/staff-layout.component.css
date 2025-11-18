@@ -1,0 +1,27 @@
+.staff-layout {
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+/* Responsive padding for content */
+.container-fluid {
+  padding-top: 1rem;
+}
+
+.layout-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-body {
+  padding: 1rem;
+  background: #f5f7fa;
+  flex: 1;
+}
+
