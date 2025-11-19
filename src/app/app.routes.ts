@@ -11,32 +11,34 @@ import { TopbarComponent } from './layouts/topbar/topbar.component';
 
 export const routes: Routes = [
 
+  // Payment Routes (Standalone)
   { path: 'payment/success', component: PaymentSuccessComponent },
+
+  // Other Public Routes
   { path: 'pricing', component: PricingComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  // { path: 'dashboard', component: DashboardComponent },
+
+  // Staff Layout
   {
-          path: 'dashboard-staff',
-          component: StaffLayoutComponent,
-          // children: [
-          //   { path: 'dashboard-staff',component: TopbarComponent  }
-          // ]
-        },
-  // Wildcard route
-  { path: '',
+    path: 'dashboard-staff',
+    component: StaffLayoutComponent,
+  },
+
+  // MAIN ADMIN LAYOUT (should be LAST)
+  {
+    path: '',
     component: AdminLayoutComponent,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
-      // { path: 'students', component: StudentsComponent },
-      // { path: 'employees', component: EmployeesComponent },
-     
     ],
   },
-   
-        { path: '**', redirectTo: '' }, 
+
+  // Wildcard (optional)
+  // { path: '**', redirectTo: '' },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes,{ useHash: false, 

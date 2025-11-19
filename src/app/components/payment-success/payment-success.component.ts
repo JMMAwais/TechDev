@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { interval, Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-payment-success',
+  imports:[CommonModule, HttpClientModule],
   standalone: true,
   templateUrl: './payment-success.component.html',
   styleUrls: ['./payment-success.component.css']
@@ -21,7 +23,12 @@ export class PaymentSuccessComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sessionId = new URLSearchParams(window.location.search).get('session_id')!;
-
+    if (!this.sessionId) {
+  // Do NOT redirect, just show normal success page without polling
+  this.isVerifying = false;
+  this.paymentVerified = true;
+  return;
+}
     this.sub = interval(2000).pipe(
       switchMap(() => this.http.get(`/api/payment/status/${this.sessionId}`))
     )
