@@ -30,7 +30,7 @@ export class PaymentSuccessComponent implements OnInit, OnDestroy {
   return;
 }
     this.sub = interval(2000).pipe(
-      switchMap(() => this.http.get(`/api/payment/status/${this.sessionId}`))
+      switchMap(() => this.http.get(`https://localhost:7190/api/payment/status/${this.sessionId}`))
     )
     .subscribe((res: any) => {
       if (res.status === 'Verified') {
