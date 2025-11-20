@@ -2,11 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { interval, Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-payment-success',
-  imports:[CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule],
   standalone: true,
   templateUrl: './payment-success.component.html',
   styleUrls: ['./payment-success.component.css']
@@ -19,16 +20,17 @@ export class PaymentSuccessComponent implements OnInit, OnDestroy {
 
   sessionId!: string; 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     this.sessionId = new URLSearchParams(window.location.search).get('session_id')!;
+
     if (!this.sessionId) {
-  // Do NOT redirect, just show normal success page without polling
-  this.isVerifying = false;
-  this.paymentVerified = true;
-  return;
-}
+      this.isVerifying = false;
+      this.paymentVerified = true;
+      return;
+    }
+
     this.sub = interval(15000).pipe(
       switchMap(() => this.http.get(`https://localhost:7190/api/payment/status/${this.sessionId}`))
     )
@@ -39,6 +41,11 @@ export class PaymentSuccessComponent implements OnInit, OnDestroy {
         this.sub.unsubscribe();
       }
     });
+  }
+
+  goToDashboard() {
+    if (!this.isVerifying)
+      this.router.navigate(['/dashboard']);
   }
 
   ngOnDestroy(): void {

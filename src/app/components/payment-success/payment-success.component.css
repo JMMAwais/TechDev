@@ -1,23 +1,92 @@
-.container {
+/* Page background */
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  padding: 20px;
+  background: #f0f4f9; 
+}
+
+/* Card box */
+.card {
+  background: white;
+  padding: 3rem 2.5rem;
+  width: 420px;
+  max-width: 90%;
+  border-radius: 22px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.08);
   text-align: center;
-  padding: 5rem;
 }
 
-.verifying-box {
-  font-size: 22px;
-  color: #444;
+/* Verifying Text */
+.text {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
-.spinner {
-  margin: 20px auto;
-  width: 50px;
-  height: 50px;
-  border: 6px solid #ddd;
+/* Spinner */
+.loader {
+  margin: 0 auto 25px;
+  width: 55px;
+  height: 55px;
+  border: 6px solid #dcdcdc;
   border-top: 6px solid #4A90E2;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Verified section styling */
+.success-icon {
+  width: 80px;
+  height: 80px;
+  background: #4caf50;
+  color: white;
+  font-size: 42px;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success h2 {
+  margin: 10px 0 5px;
+  color: #2e7d32;
+  font-size: 26px;
+}
+
+.success-text {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Dashboard button */
+.dash-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 15px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* Hover effect */
+.dash-btn:hover {
+  background: #43a047;
+}
+
+/* Disabled/Verifying state */
+.dash-btn.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  filter: blur(0.5px);
 }

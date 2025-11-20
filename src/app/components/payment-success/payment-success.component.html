@@ -1,14 +1,29 @@
-<div class="container">
+<div class="wrapper">
 
-  <div *ngIf="isVerifying" class="verifying-box">
-    <p>Please wait... Your payment is verifying.</p>
-    <div class="spinner"></div>
+  <div class="card">
+
+    <!-- Verifying Section -->
+    <div *ngIf="isVerifying" class="verifying">
+      <p class="text">Please wait... Your payment is being verified.</p>
+      <div class="loader"></div>
+    </div>
+
+    <!-- Payment Verified Section -->
+    <div *ngIf="paymentVerified" class="success">
+      <div class="success-icon">✓</div>
+      <h2>Payment Verified!</h2>
+      <p class="success-text">Your transaction was completed successfully.</p>
+    </div>
+
+    <!-- Dashboard Button (Always visible) -->
+    <button 
+      class="dash-btn"
+      [class.disabled]="isVerifying"
+      [disabled]="isVerifying"
+      (click)="goToDashboard()">
+
+      Go to Dashboard
+    </button>
+
   </div>
-
-  <div *ngIf="paymentVerified" class="verified-box">
-    <h2>Payment Verified!</h2>
-    <button routerLink="/dashboard">Go to Dashboard</button>
-  </div>
-
 </div>
-
