@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HttpParams, HttpHeaders } from '@angular/common/http';
+import { AuthResponse } from './auth-response.model';
 
 @Component({
   selector: 'app-login',
@@ -11,10 +12,15 @@ import { HttpParams, HttpHeaders } from '@angular/common/http';
   imports: [CommonModule, ReactiveFormsModule, RouterModule, HttpClientModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
+  
 })
+
+
+
 export class LoginComponent {
   loginForm: FormGroup;
   showPassword = false;
+
 
   constructor(
     private fb: FormBuilder,
@@ -27,18 +33,23 @@ export class LoginComponent {
     });
   }
 
+
   // ✅ Fix for missing method
   onGoogleSignup() {
     console.log('Google signup initiated');
   }
 
+
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
 
+
   onSubmit() {
-    if (this.loginForm.valid) {
-      const payload = this.loginForm.value;
+
+    if (this.loginForm.valid)
+       {
+          const payload = this.loginForm.value;
 
          const body = new HttpParams()
       .set('grant_type', 'password')
@@ -53,10 +64,16 @@ export class LoginComponent {
     });
 
 
-      this.http.post('https://localhost:7190/identity/Auth/token',  body.toString(), { headers })
+
+
+      this.http.post<AuthResponse>('https://localhost:7190/identity/Auth/token',  body.toString(), { headers })
         .subscribe({
           next: (res) => {
             console.log('Login successful!', res);
+            localStorage.setItem("access_token", res.access_token);
+            localStorage.setItem("refresh_token", res.refresh_token);
+            localStorage.setItem("expires_at", (Date.now() + res.expires_in * 1000).toString());
+
             alert('Login successful! Redirecting...');
             this.router.navigate(['/dashboard']);
           },
