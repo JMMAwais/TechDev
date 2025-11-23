@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { HttpParams, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpParams, HttpHeaders } from '@angular/common/http';
 import { AuthResponse } from './auth-response.model';
 
 @Component({
@@ -12,15 +11,11 @@ import { AuthResponse } from './auth-response.model';
   imports: [CommonModule, ReactiveFormsModule, RouterModule, HttpClientModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
-  
 })
-
-
-
 export class LoginComponent {
+
   loginForm: FormGroup;
   showPassword = false;
-
 
   constructor(
     private fb: FormBuilder,
@@ -33,58 +28,50 @@ export class LoginComponent {
     });
   }
 
-
-  // ✅ Fix for missing method
-  onGoogleSignup() {
-    console.log('Google signup initiated');
-  }
-
-
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
 
-
+  onGoogleSignup() {  }
   onSubmit() {
+    if (!this.loginForm.valid) {
+      this.markFormGroupTouched();
+      return;
+    }
 
-    if (this.loginForm.valid)
-       {
-          const payload = this.loginForm.value;
+    const payload = this.loginForm.value;
 
-         const body = new HttpParams()
+    const body = new HttpParams()
       .set('grant_type', 'password')
-      //.set('client_id', 'your-client-id')
       .set('client_secret', 'tenant-osama-publis-schol')
       .set('username', payload.email)
       .set('password', payload.password);
 
-
-      const headers = new HttpHeaders({
+    const headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
     });
 
+    this.http.post<AuthResponse>(
+      'https://localhost:7190/identity/Auth/token',
+      body.toString(),
+      { headers, withCredentials: true } // IMPORTANT for refresh token cookie
+    ).subscribe({
+      next: (res) => {
+        console.log('Login successful!', res);
 
 
+        // ✅ Only access token stored
+        localStorage.setItem("access_token", res.access_token);
+        localStorage.setItem("expires_at", (Date.now() + res.expires_in * 1000).toString());
 
-      this.http.post<AuthResponse>('https://localhost:7190/identity/Auth/token',  body.toString(), { headers })
-        .subscribe({
-          next: (res) => {
-            console.log('Login successful!', res);
-            localStorage.setItem("access_token", res.access_token);
-            localStorage.setItem("refresh_token", res.refresh_token);
-            localStorage.setItem("expires_at", (Date.now() + res.expires_in * 1000).toString());
-
-            alert('Login successful! Redirecting...');
-            this.router.navigate(['/dashboard']);
-          },
-          error: (err) => {
-            console.error('Login failed!', err);
-            alert('Invalid credentials!');
-          }
-        });
-    } else {
-      this.markFormGroupTouched();
-    }
+        alert('Login successful! Redirecting...');
+        this.router.navigate(['/dashboard']);
+      },
+      error: (err) => {
+        console.error('Login failed!', err);
+        alert('Invalid credentials!');
+      }
+    });
   }
 
   markFormGroupTouched() {
@@ -96,6 +83,4 @@ export class LoginComponent {
 
   get email() { return this.loginForm.get('email'); }
   get password() { return this.loginForm.get('password'); }
-
 }
-

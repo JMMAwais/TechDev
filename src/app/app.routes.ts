@@ -8,6 +8,7 @@ import { PaymentSuccessComponent } from './components/payment-success/payment-su
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { StaffLayoutComponent } from './layouts/Staff/staff-layout/staff-layout.component';
 import { TopbarComponent } from './layouts/topbar/topbar.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
 
@@ -25,15 +26,16 @@ export const routes: Routes = [
     component: StaffLayoutComponent,
   },
 
-  // MAIN ADMIN LAYOUT (should be LAST)
+  
   {
-    path: '',
-    component: AdminLayoutComponent,
-    children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: DashboardComponent },
-    ],
-  },
+  path: 'app',
+  component: AdminLayoutComponent,
+  canActivate: [authGuard],
+  children: [
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: 'dashboard', component: DashboardComponent },
+  ],
+}
 
   // Wildcard (optional)
   // { path: '**', redirectTo: '' },
