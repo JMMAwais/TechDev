@@ -11,8 +11,10 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   const accessToken = localStorage.getItem("access_token");
 
+  console.log(accessToken)
   // Attach Access Token
   let authReq = req;
+  console.log(authReq)
   if (accessToken) {
     authReq = req.clone({
       setHeaders: {
@@ -20,6 +22,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
       },
       withCredentials: true   // IMPORTANT → send HTTP-only cookie
     });
+    console.log('second auth request', authReq)
   }
 
   return next(authReq).pipe(
