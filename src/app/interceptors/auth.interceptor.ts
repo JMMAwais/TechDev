@@ -11,10 +11,10 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   const accessToken = localStorage.getItem("access_token");
 
-  console.log(accessToken)
+  console.log('chal rha hai',accessToken)
   // Attach Access Token
   let authReq = req;
-  console.log(authReq)
+  console.log('check ho rha', authReq)
   if (accessToken) {
     authReq = req.clone({
       setHeaders: {
