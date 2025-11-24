@@ -11,4 +11,6 @@ import { DashboardComponent } from '../../../components/dashboard/dashboard.comp
   templateUrl: './staff-layout.component.html',
   styleUrls: ['./staff-layout.component.css']
 })
-export class StaffLayoutComponent {}
+export class StaffLayoutComponent {
+  
+}
