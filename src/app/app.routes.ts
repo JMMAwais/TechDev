@@ -23,7 +23,10 @@ export const routes: Routes = [
   {
     path: 'dashboard-staff',
     component: StaffLayoutComponent,
-    canActivate:[authGuard]
+    canActivate: [authGuard],  // only here
+    children: [
+      { path: 'dashboard', component: DashboardComponent }
+    ]
   },
 
   // Admin Layout – Fully Protected

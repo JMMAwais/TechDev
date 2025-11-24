@@ -5,10 +5,7 @@ import { routes } from './app/app.routes';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideRouter(routes,ithEnabledBlockingInitialNavigation())
+    provideRouter(routes)
   ]
 });
-function ithEnabledBlockingInitialNavigation(): import("@angular/router").RouterFeatures {
-  throw new Error('Function not implemented.');
-}
 
