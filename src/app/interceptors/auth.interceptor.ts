@@ -6,16 +6,19 @@ import { catchError, switchMap, throwError } from 'rxjs';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
+
+
   const http = inject(HttpClient);
   const router = inject(Router);
 
   const accessToken = localStorage.getItem("access_token");
 
-  console.log('chal rha hai',accessToken)
+
   // Attach Access Token
   let authReq = req;
-  console.log('check ho rha', authReq)
+
   if (accessToken) {
+      console.log('access token true hai', authReq)
     authReq = req.clone({
       setHeaders: {
         Authorization: `Bearer ${accessToken}`

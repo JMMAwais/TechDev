@@ -8,7 +8,7 @@ import { AuthResponse } from './auth-response.model';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule, HttpClientModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -50,12 +50,13 @@ export class LoginComponent {
     const headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
     });
-
+   
     this.http.post<AuthResponse>(
       'https://localhost:7190/identity/Auth/token',
       body.toString(),
       { headers, withCredentials: true } // IMPORTANT for refresh token cookie
     ).subscribe({
+      
       next: (res) => {
         console.log('Login successful!', res);
 
@@ -65,7 +66,7 @@ export class LoginComponent {
         localStorage.setItem("expires_at", (Date.now() + res.expires_in * 1000).toString());
 
         alert('Login successful! Redirecting...');
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard-staff']);
       },
       error: (err) => {
         console.error('Login failed!', err);
