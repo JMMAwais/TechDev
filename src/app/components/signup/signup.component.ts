@@ -94,6 +94,7 @@ onSubmit() {
           console.log('Signup successful!', res);
 
            const identifier = res?.identifier;
+           console.log('check ho rha', identifier);
           // ✅ After signup, get plan details using planId
  
           if (this.planId) {
