@@ -93,8 +93,10 @@ onSubmit() {
         next: (res: any) => {
           console.log('Signup successful!', res);
 
+          localStorage.setItem("access_token", res.access_token);
+          localStorage.setItem("expires_at", (Date.now() + res.expires_in * 1000).toString());
+
            const identifier = res?.identifier;
-           console.log('check ho rha', identifier);
           // ✅ After signup, get plan details using planId
  
           if (this.planId) {
@@ -106,7 +108,7 @@ onSubmit() {
 
                   if (plan.name.toLowerCase() === 'free' || plan.price === 0) {
                     alert('Free plan activated! Redirecting to dashboard...');
-                    window.location.href = '/dashboard';
+                    window.location.href = '/dashboard-staff';
                   } else {
                    // this.redirectToStripe(plan);
                     this.http.post('https://localhost:7190/api/payment/create-checkout-session', {
