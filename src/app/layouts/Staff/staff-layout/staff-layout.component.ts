@@ -7,7 +7,7 @@ import { DashboardComponent } from '../../../components/dashboard/dashboard.comp
 @Component({
   selector: 'app-staff-layout',
   standalone: true,
-  imports: [RouterOutlet,TopbarComponent,SideMenuComponent,DashboardComponent],
+  imports: [RouterOutlet,TopbarComponent,SideMenuComponent],
   templateUrl: './staff-layout.component.html',
   styleUrls: ['./staff-layout.component.css']
 })

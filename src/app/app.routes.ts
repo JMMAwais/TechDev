@@ -8,6 +8,7 @@ import { PaymentSuccessComponent } from './components/payment-success/payment-su
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { StaffLayoutComponent } from './layouts/Staff/staff-layout/staff-layout.component';
 import {  authGuard } from './guards/auth.guard';
+import { InstituteComponent} from './components/institute-profile/institute-profile.component';
 
 export const routes: Routes = [
 
@@ -19,13 +20,16 @@ export const routes: Routes = [
   // Payment Webhook Page
   { path: 'payment/success', component: PaymentSuccessComponent },
 
+  {path: 'institute' , component: InstituteComponent},
   // Staff Layout
   {
     path: 'dashboard-staff',
     component: StaffLayoutComponent,
-    canActivate: [authGuard],  // only here
+     canActivate: [authGuard],  // only here
     children: [
-      { path: 'dashboard', component: DashboardComponent }
+      { path: 'dashboard', component: DashboardComponent },
+      {path: 'institute', component: InstituteComponent}
+      
     ]
   },
 

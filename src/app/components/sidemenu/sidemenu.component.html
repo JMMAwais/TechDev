@@ -43,11 +43,7 @@
     </li>
 
     <li>
-      <a 
-        routerLink="/subjects" 
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
+      <a  routerLink="/subjects" routerLinkActive="active"[routerLinkActiveOptions]="{ exact: true }">
         <i class="fas fa-book-open"></i>
         <span>Subjects</span>
       </a>
@@ -56,6 +52,18 @@
       <a routerLink="/team" routerLinkActive="active">
         <i class="fa fa-users"></i>
         <span>Staff</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/students" routerLinkActive="active">
+        <i class="fa fa-user-graduate"></i>
+        <span>Students</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/settings" routerLinkActive="active">
+        <i class="fa fa-cog"></i>
+        <span>Settings</span>
       </a>
     </li>
   </ul>
