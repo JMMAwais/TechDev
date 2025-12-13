@@ -1,31 +1,44 @@
-<nav class="navbar">
-  <!-- Logo + Text -->
-  <div class="left-section">
-    <img src="assets/logo.png" class="logo" alt="logo">
+<nav class="navbar navbar-expand-lg custom-navbar">
+  <div class="container-fluid">
 
-    <div class="text-group">
-      <span class="brand">EduTechDev</span>
-      <span class="tagline">SMART LEARNING</span>
+    <!-- Left: Logo + Text -->
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+      <img src="assets/logo.png" class="logo" alt="logo">
+      <div class="text-group">
+        <span class="brand">EduTechDev</span>
+        <span class="tagline">SMART LEARNING</span>
+      </div>
+    </a>
+
+    <!-- Mobile Toggle -->
+    <button class="navbar-toggler text-white" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu + Actions -->
+    <div class="collapse navbar-collapse" id="mainNavbar">
+
+      <!-- Center Menu -->
+      <ul class="navbar-nav mx-auto menu">
+        <li class="nav-item"><a class="nav-link">Features</a></li>
+        <li class="nav-item"><a class="nav-link">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link">Testimonials</a></li>
+        <li class="nav-item"><a class="nav-link">Contact</a></li>
+      </ul>
+
+      <!-- Right Actions -->
+      <div class="actions">
+        <span class="material-icons dark-icon">dark_mode</span>
+        <button class="login-btn">Login</button>
+
+        <button class="start-btn">
+          Get Started
+          <span class="material-icons arrow">arrow_forward</span>
+        </button>
+      </div>
+
     </div>
   </div>
-
-  <!-- Menu -->
-  <ul class="menu">
-    <li><a>Features</a></li>
-    <li><a>Pricing</a></li>
-    <li><a>Testimonials</a></li>
-    <li><a>Contact</a></li>
-  </ul>
-
-  <!-- Right Actions -->
-  <div class="actions">
-    <span class="material-icons dark-icon">dark_mode</span>
-    <button class="login-btn">Login</button>
-
-    <button class="start-btn">
-      Get Started
-      <span class="material-icons arrow">arrow_forward</span>
-    </button>
-  </div>
 </nav>
-
