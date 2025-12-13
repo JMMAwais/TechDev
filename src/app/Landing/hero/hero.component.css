@@ -1,0 +1,169 @@
+/* src/app/components/hero/hero.component.css */
+:host { display: block; }
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  padding: 150px 20px;
+  background: #00100f; /* deep dark background */
+  color: #e8fffc;
+}
+.hero-section::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+
+  /* Put the radial exactly in the corner */
+  top: -200px;
+  right: -200px;
+
+  background: radial-gradient(
+    circle at top right,   /* opposite side = 1/4 radial */
+    rgba(90, 228, 221, 0.979),
+    transparent 70%
+  );
+
+  filter: blur(25px);
+  z-index: 1;
+}
+/* 2) RIGHT-SIDE SMALL FULL RADIAL */
+.hero-section::after {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  top: 50%;
+  right: 30px;
+
+  background: radial-gradient(
+    circle,
+    rgba(0, 255, 242, 0.26),
+    transparent 60%
+  );
+
+  z-index: 1;
+  filter: blur(25px);
+}
+
+
+.hero-section .left-glow {
+  content: "";
+  position: absolute;
+  width: 700px;
+  height: 500px;
+  left: -50px;
+  top: 25%;
+
+  background:
+    /* linear-gradient(to right, rgba(0, 255, 180, 0.15), transparent 45%), */
+    radial-gradient(circle at left , rgba(0, 255, 242, 0.336), transparent 50%);
+
+  z-index: 1;
+  filter: blur(20px);
+}
+.hero-section > * {
+  position: relative;
+  z-index: 5;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 500;
+
+  border-radius: 30px;
+  border: 1px solid rgba(0, 255, 200, 0.35);
+
+  background: rgba(0, 255, 200, 0.08); /* subtle neon tint */
+  color: #37e7d4;                     /* neon text */
+
+  backdrop-filter: blur(6px);         /* glass effect */
+
+  box-shadow: 0 0 12px rgba(0, 255, 200, 0.15);  /* neon glow */
+}
+/* .text-primary { color: #49dddd !important; } */
+.badge-custom {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 600;
+
+  border-radius: 999px;
+
+  background: rgba(0, 255, 200, 0.08);
+  border: 1px solid rgba(0, 255, 200, 0.35);
+
+  color: #1AF3DD;
+  backdrop-filter: blur(6px);
+
+  box-shadow: 0 0 12px rgba(0, 255, 200, 0.25);
+}
+.badge-text {
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  font-family: "Inter", sans-serif; /* second image style */
+}
+.lightning-icon {
+  stroke: #1AF3DD;     
+  width: 16px;
+  height: 16px;
+  opacity: 0.9;
+}
+
+.hero-highlight {
+  color: #27f4d2e5 !important;  /* MATCHING FIRST IMAGE COLOR */
+  text-shadow: 0 0 12px rgba(39, 244, 209, 0.3);
+}
+.hero-description {
+  color: #9cc5bf !important;   /* exact second screenshot match */
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+.neon-btn {
+  background: linear-gradient(135deg, #19e5d3, #14c8b5);
+  border: none !important;
+  color: #ffffff !important;
+
+  padding: 14px 32px;
+  font-size: 18px;
+  font-weight: 600;
+
+  border-radius: 12px;
+
+  box-shadow: 0 0 18px rgba(0, 255, 200, 0.35);
+  transition: all 0.25s ease;
+}
+.neon-btn:hover {
+  background: linear-gradient(135deg, #1ffff0, #12bfae);
+  box-shadow: 0 0 24px rgba(0, 255, 200, 0.55);
+  transform: translateY(-2px);
+}
+.trial-info {
+  color: #9be7dc;
+  opacity: 0.9;
+}
+
+.trial-info small {
+  font-size: 1.2rem;
+}
+
+.check-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #1fe1c1;
+  color: #00332c;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}

@@ -9,6 +9,9 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { StaffLayoutComponent } from './layouts/Staff/staff-layout/staff-layout.component';
 import {  authGuard } from './guards/auth.guard';
 import { InstituteComponent} from './components/institute-profile/institute-profile.component';
+import { HeaderComponent } from './Landing/header/header.component';
+import { HeroComponent } from './Landing/hero/hero.component';
+import { LandingLayoutComponent } from './layouts/landing-layout/landing-layout.component';
 
 export const routes: Routes = [
 
@@ -16,7 +19,8 @@ export const routes: Routes = [
   { path: 'pricing', component: PricingComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-
+  { path: 'header', component:HeaderComponent},
+  { path: 'hero', component: HeroComponent},
   // Payment Webhook Page
   { path: 'payment/success', component: PaymentSuccessComponent },
 
@@ -32,7 +36,11 @@ export const routes: Routes = [
       
     ]
   },
-
+  { path:'', component: LandingLayoutComponent,
+    children:[
+      {path: '' , component: HeroComponent}
+    ]
+  },
   // Admin Layout – Fully Protected
   {
     path: 'app',
