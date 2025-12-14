@@ -32,13 +32,13 @@
   position: absolute;
   width: 360px;
   height: 360px;
-  top: 50%;
-  right: 30px;
+  top: 35%;
+  right: 140px;
 
   background: radial-gradient(
     circle,
     rgba(0, 255, 242, 0.26),
-    transparent 60%
+    transparent 75%
   );
 
   z-index: 1;
@@ -152,18 +152,51 @@
 }
 
 .trial-info small {
-  font-size: 1.2rem;
+  font-size: 1.0rem;
 }
 
 .check-icon {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #1fe1c1;
-  color: #00332c;
-  display: inline-flex;
+
+  background: transparent;              /* remove fill */
+  border: 2px solid #20e3c2;             /* outline circle */
+  color: #20e3c2;                        /* check icon color */
+
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
-  font-weight: bold;
+
+  font-size: 12px;                       /* check size */
+  line-height: 1;
+}
+.check-icon {
+  box-shadow: 0 0 6px rgba(32, 227, 194, 0.35);
+}
+
+.demo-btn {
+  background: rgba(15, 25, 25, 0.85);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 0.75rem 1.75rem;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  transition: all 0.25s ease;
+}
+
+.demo-btn:hover {
+  background: rgba(20, 35, 35, 0.95);
+  border-color: rgba(32, 227, 194, 0.5);
+  color: #ffffff;
+  box-shadow: 0 0 0 1px rgba(32, 227, 194, 0.25);
+}
+.stats-label {
+  color: rgba(255, 255, 255, 0.75); /* readable light text */
+  font-size: 14px;
+  margin-top: 6px;
+  letter-spacing: 0.5px;
 }
