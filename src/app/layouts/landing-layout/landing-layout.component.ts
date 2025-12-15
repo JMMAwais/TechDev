@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../../Landing/header/header.component'; 
 
+
 @Component({
   selector: 'app-landing-layout',
   standalone: true,

@@ -1,0 +1,84 @@
+<section class="pricing-section">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="pricing-header">
+      <h2>
+        Simple, Transparent <span>Pricing</span>
+      </h2>
+      <p>Choose the perfect plan for your institution</p>
+    </div>
+
+    <!-- Cards -->
+    <div class="pricing-grid">
+
+      <!-- Starter -->
+      <div class="pricing-card" [class.featured]="selectedPlan === 'starter'" (click)="selectPlan('starter')">
+        <h3>Starter</h3>
+        <p class="subtitle">Perfect for small institutions</p>
+
+        <div class="price">
+          <span class="amount">$49</span>
+          <span class="duration">/month</span>
+        </div>
+
+        <ul>
+          <li><span class="check"></span>Up to 500 students</li>
+          <li><span class="check"></span>5 admin users</li>
+          <li><span class="check"></span>Basic reports</li>
+          <li><span class="check"></span>Email support</li>
+          <li><span class="check"></span>Core modules</li>
+        </ul>
+        <button class="pricing-btn "
+        [class.pricing-btn-primary]="selectedPlan === 'starter'">Get Started</button>
+      </div>
+
+      <!-- Professional -->
+      <div class="pricing-card" [class.featured]="selectedPlan === 'professional'" (click)="selectPlan('professional')">
+        <div class="badge">Most Popular</div>
+
+        <h3>Professional</h3>
+        <p class="subtitle">Best for growing institutions</p>
+
+        <div class="price">
+          <span class="amount">$149</span>
+          <span class="duration">/month</span>
+        </div>
+
+        <ul>
+          <li><span class="check"></span>Up to 5,000 students</li>
+          <li><span class="check"></span>Unlimited admin users</li>
+          <li><span class="check"></span>Advanced analytics</li>
+          <li><span class="check"></span>Priority support</li>
+          <li><span class="check"></span>All modules</li>
+          <li><span class="check"></span>Api access</li>
+        </ul>
+          <button class="pricing-btn"
+          [class.pricing-btn-primary]="selectedPlan === 'professional'">Get Started</button>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="pricing-card" [class.featured]="selectedPlan === 'enterprise'" (click)="selectPlan('enterprise')">
+        <h3>Enterprise</h3>
+        <p class="subtitle">For large-scale deployments</p>
+
+        <div class="price">
+          <span class="amount">Custom</span>
+        </div>
+
+        <ul>
+          <li><span class="check"></span>Unlimited students</li>
+          <li><span class="check"></span>Custom integrations</li>
+          <li><span class="check"></span>Dedicated support</li>
+          <li><span class="check"></span>SLA gurantee</li>
+          <li><span class="check"></span>On-premise options</li>
+          <li><span class="check"></span>White-labeling</li>
+        </ul>
+          <button class="pricing-btn " 
+            [class.pricing-btn-primary]="selectedPlan === 'enterprise'">Get Started</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+

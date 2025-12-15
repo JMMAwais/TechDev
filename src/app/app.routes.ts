@@ -12,6 +12,7 @@ import { InstituteComponent} from './components/institute-profile/institute-prof
 import { HeaderComponent } from './Landing/header/header.component';
 import { HeroComponent } from './Landing/hero/hero.component';
 import { LandingLayoutComponent } from './layouts/landing-layout/landing-layout.component';
+import { FeaturesComponent } from './Landing/feature/feature.component';
 
 export const routes: Routes = [
 
@@ -38,7 +39,8 @@ export const routes: Routes = [
   },
   { path:'', component: LandingLayoutComponent,
     children:[
-      {path: '' , component: HeroComponent}
+      {path: '' , component: HeroComponent},
+      {path: 'feature', component:FeaturesComponent}
     ]
   },
   // Admin Layout – Fully Protected

@@ -1,0 +1,158 @@
+.pricing-section {
+  background: #00100f;
+  padding: 100px 20px;
+  color: #e8fffc;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.pricing-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.pricing-header h2 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.pricing-header h2 span {
+  color: #20e3c2;
+}
+
+.pricing-header p {
+  color: #9cc5bf;
+  margin-top: 10px;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.pricing-card {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  padding: 32px;
+  border: 1px solid rgba(32, 227, 194, 0.15);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(32, 227, 194, 0.15);
+}
+
+.pricing-card h3 {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #9cc5bf;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.price {
+  margin-bottom: 25px;
+}
+
+.amount {
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.duration {
+  color: #9cc5bf;
+  margin-left: 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  color: #bfeae4;
+}
+
+/* Check icon */
+.check {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #20e3c2;
+  position: relative;
+}
+
+.check::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 9px;
+  border: solid #20e3c2;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Featured card */
+.featured {
+  border: 2px solid #20e3c2;
+  box-shadow: 0 0 30px rgba(32, 227, 194, 0.25);
+}
+
+.badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #20e3c2;
+  color: #002b27;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.pricing-btn {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border-radius: 12px;
+
+  background: rgba(10, 20, 20, 0.85);
+  color: #ffffff;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-weight: 400;
+
+  transition: all 0.25s ease;
+}
+.pricing-btn:hover {
+  border-color: rgba(32, 227, 194, 0.5);
+}
+
+.pricing-btn-primary {
+  background: linear-gradient(
+    135deg,
+    #1fe1c1,
+    #2df5d4
+  );
+  color: #00332c;
+  border: none;
+  font-weight: 600;
+}
+
+.pricing-btn-primary:hover {
+  box-shadow: 0 10px 30px rgba(32, 227, 194, 0.45);
+  transform: translateY(-2px);
+}
