@@ -4,7 +4,7 @@ import { CanActivateFn, Router } from '@angular/router';
 export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   const token = localStorage.getItem('access_token');
-  console.log('Guard ka token dekho',token)
+
   if (!token) {
     return router.createUrlTree(['/login']);
   }
