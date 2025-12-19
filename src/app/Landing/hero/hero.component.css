@@ -200,3 +200,14 @@
   margin-top: 6px;
   letter-spacing: 0.5px;
 }
+@media (max-width: 768px) {
+  .hero-section::after {
+    width: 280px;
+    height: 280px;
+
+    top: 20%;
+    right: -120px;   /* 🔥 keeps glow on right side */
+    
+    filter: blur(30px);
+  }
+}
