@@ -18,13 +18,13 @@
 }
 
 .footer-desc {
-  font-size: 14px;
+  font-size: 16px;
   color: rgba(255, 255, 255, 0.7);
   max-width: 260px;
 }
 
 .footer-title {
-  font-size: 15px;
+  font-size: 16px;
   margin-bottom: 12px;
   color: #ffffff;
 }
@@ -39,7 +39,7 @@
 
     a {
       text-decoration: none;
-      font-size: 14px;
+      font-size: 15px;
       color: rgba(255, 255, 255, 0.65);
       transition: color 0.2s ease;
 
@@ -58,7 +58,9 @@
   font-size: 13px;
   color: rgba(255, 255, 255, 0.6);
 }
-
+.logo{
+    height:35px;
+}
 /* Mobile tweaks */
 @media (max-width: 576px) {
   .footer-desc {

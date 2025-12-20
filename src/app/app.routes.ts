@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-// import { PricingComponent } from './components/pricing/pricing.component';
+ import { PricingComponent } from './components/pricing/pricing.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -13,14 +13,14 @@ import { HeaderComponent } from './Landing/header/header.component';
 import { HeroComponent } from './Landing/hero/hero.component';
 import { LandingLayoutComponent } from './layouts/landing-layout/landing-layout.component';
 import { FeaturesComponent } from './Landing/feature/feature.component';
-import { PricingComponent } from './Landing/pricing/pricing.component';
+// import { PricingComponent } from './Landing/pricing/pricing.component';
 import { TestimonialsComponent } from './Landing/testimonial/testimonial.component';
 import { ContactComponent } from './Landing/contact/contact.component';
 
 export const routes: Routes = [
 
   // Public Routes
-  // { path: 'pricing', component: PricingComponent },
+   { path: 'pricing', component: PricingComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'header', component:HeaderComponent},
