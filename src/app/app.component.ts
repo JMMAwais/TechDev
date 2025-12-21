@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { PricingComponent } from './components/pricing/pricing.component';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -14,4 +15,14 @@ import { PricingComponent } from './components/pricing/pricing.component';
 })
 export class AppComponent {
   title = 'Techdev';
+  constructor(private router: Router) {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+  }
 }
